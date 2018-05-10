@@ -17,10 +17,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
 gem 'dotenv-rails'
-gem 'pry-rails'
-gem 'better_errors'
-gem 'binding_of_caller'
-gem 'carrierwave', '~> 1.0'
+gem 'carrierwave'
 gem 'mini_magick'
 
 group :development, :test do
@@ -28,6 +25,9 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'letter_opener_web'
+  gem 'pry-rails'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :development do
