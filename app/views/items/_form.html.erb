@@ -1,0 +1,37 @@
+<div class="">
+  <% #エラーメッセージ %>
+  <% if @item.errors.any? %>
+    <div class="">
+      <% @item.errors.full_messages.each do |message| %>
+        <p><%= message %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+<% #入力フォーム %>
+  <%= form_with model:@item, local: true do |form| %>
+    <div class="">
+      <%= form.label :item_name %>
+      <%= form.text_field :item_name %>
+    </div>
+
+    <div class="">
+      <%= form.label :item_image %>
+      <%= form.file_field :item_image %>
+    </div>
+
+    <div class="">
+      <%= form.label :price %>
+      <%= form.text_field :price %>
+    </div>
+
+    <div class="">
+      <%= form.label :item_content %>
+      <%= form.text_area :item_content %>
+    </div>
+
+    <div class="">
+      <%= form.submit %>
+    </div>
+  <% end %>
+</div>
