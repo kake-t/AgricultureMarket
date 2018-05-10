@@ -1,0 +1,19 @@
+<div class="">
+  <% @items.each do |item| %>
+  <div class="">
+    <%= item.item_name %>
+  </div>
+
+  <div class="">
+    <%= image_tag item.item_image %>
+  </div>
+
+  <div class="">
+    <%= item.price %>
+  </div>
+
+  <div class="">
+    <%= item.item_content %>
+  </div>
+  <% end %>
+</div>
