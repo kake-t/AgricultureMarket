@@ -2,7 +2,7 @@
   "name": "AgricultureMarket",
   "private": true,
   "dependencies": {
-    "bootstrap3": "^3.3.5",
+    "bootstrap": "3",
     "jquery": "^3.3.1"
   }
 }
