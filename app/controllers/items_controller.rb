@@ -1,4 +1,7 @@
+# items
 class ItemsController < ApplicationController
+  before_action :set_item, only: %i[show]
+
   def top; end
 
   def index
@@ -16,6 +19,10 @@ class ItemsController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def show
+
   end
 
   private
