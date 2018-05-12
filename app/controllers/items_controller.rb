@@ -1,6 +1,6 @@
 # items
 class ItemsController < ApplicationController
-  before_action :set_item, only: %i[show]
+  before_action :set_item, only: %i[show edit update destroy]
 
   def top; end
 
@@ -21,8 +21,21 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
+  def show; end
 
+  def edit; end
+
+  def update
+    if @item.update(item_params)
+      redirect_to items_path, notice: '編集しました'
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @item.destroy
+    redirect_to items_path, notice: '削除しました'
   end
 
   private

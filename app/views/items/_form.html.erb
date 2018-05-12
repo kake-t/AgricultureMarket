@@ -1,8 +1,8 @@
 <div class="">
   <% #エラーメッセージ %>
-  <% if @item.errors.any? %>
+  <% if item.errors.any? %>
     <div class="">
-      <% @item.errors.full_messages.each do |message| %>
+      <% item.errors.full_messages.each do |message| %>
         <p><%= message %></p>
       <% end %>
     </div>
@@ -10,6 +10,10 @@
 
 <% #入力フォーム %>
   <%= form_with model: item, local: true do |form| %>
+    <div class="">
+      <%= image_tag item.item_image %>
+    </div>
+
     <div class="">
       <%= form.label :item_name %>
       <%= form.text_field :item_name %>
