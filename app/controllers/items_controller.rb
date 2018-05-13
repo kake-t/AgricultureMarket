@@ -11,6 +11,7 @@ class ItemsController < ApplicationController
   def new
     @item = if params[:back]
               Item.new(item_params)
+              @item.item_image.retrieve_from_cache! params[:cache][:item_image]
             else
               Item.new
             end
@@ -28,9 +29,14 @@ class ItemsController < ApplicationController
 
   def show; end
 
-  def edit; end
+  def edit
+    if params[:back]
+      @item = params[:item]
+    end
+  end
 
   def update
+    @item.item_image.retrieve_from_cache! params[:cache][:item_image]
     if @item.update(item_params)
       redirect_to items_path, notice: '編集しました'
     else
@@ -45,6 +51,7 @@ class ItemsController < ApplicationController
 
   def confirm
     @item = Item.new(item_params)
+    render 'new' if @item.invalid?
   end
 
   private

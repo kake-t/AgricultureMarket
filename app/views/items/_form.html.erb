@@ -8,7 +8,7 @@
     </div>
   <% end %>
 
-<% #入力フォーム pacth用の確認画面 %>
+<% #入力フォーム %>
   <%= form_with model: item, local: true, url: choose_new_or_edit do |form| %>
     <div class="">
       <%= image_tag item.item_image %>
@@ -22,6 +22,7 @@
     <div class="">
       <%= form.label :item_image %>
       <%= form.file_field :item_image %>
+      <%= form.hidden_field :image_cache %>
     </div>
 
     <div class="">

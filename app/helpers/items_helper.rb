@@ -3,7 +3,7 @@ module ItemsHelper
     if action_name == 'new' || action_name == 'confirm'
       confirm_items_path
     elsif action_name == 'edit'
-      confirm_item_path(@item)
+      confirm_item_path(params[:id])
     end
   end
 
@@ -20,6 +20,14 @@ module ItemsHelper
       item_path(params[:id])
     else
       items_path
+    end
+  end
+
+  def back_new_or_edit
+    if request.post?
+      new_item_path
+    elsif request.patch?
+      edit_item_path(params[:id])
     end
   end
 end
