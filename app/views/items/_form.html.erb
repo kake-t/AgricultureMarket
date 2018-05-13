@@ -9,9 +9,10 @@
   <% end %>
 
 <% #入力フォーム %>
-  <%= form_with model: item, local: true, url: choose_new_or_edit do |form| %>
+  <%= form_with model: item, local: true, url: choose_url_new_or_edit, method: choose_method_new_or_edit do |form| %>
     <div class="">
       <%= image_tag item.item_image %>
+      <%= image_tag @item_image.item_image.url if @item_image.present? %>
     </div>
 
     <div class="">

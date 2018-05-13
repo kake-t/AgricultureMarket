@@ -1,6 +1,6 @@
 # items
 class ItemsController < ApplicationController
-  before_action :set_item, only: %i[show edit update destroy]
+  before_action :set_item, only: %i[show update destroy]
 
   def top; end
 
@@ -31,7 +31,10 @@ class ItemsController < ApplicationController
 
   def edit
     if params[:back]
-      @item = params[:item]
+      @item_image = Item.find(params[:id])
+      @item = Item.new(item_params)
+    else
+      set_item
     end
   end
 
