@@ -1,4 +1,4 @@
-<div class="">
+<div class="container">
   <% #エラーメッセージ %>
   <% if item.errors.any? %>
     <div class="">
@@ -8,8 +8,8 @@
     </div>
   <% end %>
 
-<% #入力フォーム %>
-  <%= form_with model: item, local: true do |form| %>
+<% #入力フォーム pacth用の確認画面 %>
+  <%= form_with model: item, local: true, url: confirm_items_path do |form| %>
     <div class="">
       <%= image_tag item.item_image %>
     </div>

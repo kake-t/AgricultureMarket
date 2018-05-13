@@ -9,11 +9,16 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = Item.new
+    @item = if params[:back]
+              Item.new(item_params)
+            else
+              Item.new
+            end
   end
 
   def create
     @item = Item.new(item_params)
+    @item.item_image.retrieve_from_cache! params[:cache][:item_image]
     if @item.save
       redirect_to items_path, notice: '出品しました'
     else
@@ -36,6 +41,10 @@ class ItemsController < ApplicationController
   def destroy
     @item.destroy
     redirect_to items_path, notice: '削除しました'
+  end
+
+  def confirm
+    @item = Item.new(item_params)
   end
 
   private
