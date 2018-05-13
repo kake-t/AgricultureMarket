@@ -1,5 +1,5 @@
 <div class="container">
-  <%= form_with model: @item, local: true do |form| %>
+  <%= form_with model: @item, local: true, url: choose_create_or_update, method: choose_post_or_pacth do |form| %>
     <div class="">
       <%= image_tag @item.item_image.url %>
     </div>
