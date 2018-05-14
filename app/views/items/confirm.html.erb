@@ -31,7 +31,7 @@
     </div>
   <% end %>
 
-<% #戻るボタン %>
+<%#戻るボタン %>
   <div class="">
     <%= form_with model: @item, local: true, url: back_new_or_edit, method: :get do |form| %>
       <%= form.hidden_field :item_name %>

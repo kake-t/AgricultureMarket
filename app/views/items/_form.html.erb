@@ -1,5 +1,5 @@
 <div class="container">
-  <% #エラーメッセージ %>
+  <%#エラーメッセージ %>
   <% if item.errors.any? %>
     <div class="">
       <% item.errors.full_messages.each do |message| %>
@@ -8,7 +8,7 @@
     </div>
   <% end %>
 
-<% #入力フォーム %>
+<%#入力フォーム %>
   <%= form_with model: item, local: true, url: choose_url_new_or_edit, method: choose_method_new_or_edit do |form| %>
     <div class="">
       <%= image_tag item.item_image %>
