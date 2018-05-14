@@ -9,8 +9,45 @@
   </head>
 
   <body>
-<%#header %>
+<%#navbar %>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
 
+  <%# ハンバーガーメニュー %>
+        <div class="navbar-header">
+          <button type="button" name="button" class="navbar-toggle collapsed"
+          data-toggle="collapse" data-target="#gnavi">
+            <span class="sr-only">Bootstrap</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">AgricultureMarket</a>
+        </div>
+
+  <%# ヘッダーメニュー %>
+        <div id="gnavi" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+              <li><%= link_to 'a', items_path %></li>
+              <li><%= link_to 'a', items_path %></li>
+              <li><%= link_to 'a', items_path %></li>
+            <% else %>
+              <li><%= link_to '商品一覧', items_path %></li>
+              <li><%= link_to 'ログイン', items_path %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+<%# フラッシュメッセージ %>
+    <% if notice %>
+      <p class="alert alert-notice"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-error"><%= alert %></p>
+    <% end %>
 
     <%= yield %>
 
