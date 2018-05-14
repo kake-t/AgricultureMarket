@@ -1,12 +1,12 @@
 <div class="container">
-  <%= form_with model: @item, local: true, url: choose_create_or_update, method: choose_post_or_pacth do |form| %>
+  <%= form_with model: @item, local: true, url: choose_create_or_update, method: choose_post_or_pacth do |f| %>
     <div class="">
       <%= image_tag @item.item_image.url %>
     </div>
 
     <div class="">
-      <%= form.label :item_name %>
-      <%= form.hidden_field :item_name %>
+      <%= f.label :item_name %>
+      <%= f.hidden_field :item_name %>
       <%= @item.item_name %>
     </div>
 
@@ -15,30 +15,30 @@
     </div>
 
     <div class="">
-      <%= form.label :price %>
-      <%= form.hidden_field :price %>
+      <%= f.label :price %>
+      <%= f.hidden_field :price %>
       <%= @item.price %>
     </div>
 
     <div class="">
-      <%= form.label :item_content %>
-      <%= form.hidden_field :item_content %>
+      <%= f.label :item_content %>
+      <%= f.hidden_field :item_content %>
       <%= @item.item_content %>
     </div>
 
     <div class="">
-      <%= form.submit 'はい' %>
+      <%= f.submit 'はい' %>
     </div>
   <% end %>
 
 <%#戻るボタン %>
   <div class="">
-    <%= form_with model: @item, local: true, url: back_new_or_edit, method: :get do |form| %>
-      <%= form.hidden_field :item_name %>
-      <%= form.hidden_field :price %>
-      <%= form.hidden_field :item_content %>
+    <%= form_with model: @item, local: true, url: back_new_or_edit, method: :get do |f| %>
+      <%= f.hidden_field :item_name %>
+      <%= f.hidden_field :price %>
+      <%= f.hidden_field :item_content %>
       <%= hidden_field_tag :"item[item_image]", @item.item_image.cache_name %>
-      <%= form.submit 'いいえ', name: :back %>
+      <%= f.submit 'いいえ', name: :back %>
     <% end %>
   </div>
 </div>

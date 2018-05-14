@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'items#top'
+  resources :users, only: [:show]
+  root 'items#index'
 
   resources :items do
     collection do
