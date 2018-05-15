@@ -1,10 +1,36 @@
 <div class="container">
+
+  <%= form_with model: @user, local: true do |f| %>
+
   <div class="">
-    <%= label_tag :user_icon %>
+    <%= f.label :user_icon %>
     <%= image_tag @user.user_icon %>
   </div>
   <div class="">
-    <%= label_tag :user_name %>
+    <%= f.label :user_name %>
     <%= @user.user_name %>
   </div>
+
+  <% end %>
+
+  <div class="">
+    <%= link_to 'ユーザー情報編集', edit_user_registration_path %>
+  </div>
+
+  <div class="">
+    生産者情報登録 or 生産者情報詳細 or 生産者情報編集
+  </div>
+
+  <div class="">
+    お気に入り一覧
+  </div>
+
+  <div class="">
+    フォロー一覧
+  </div>
+
+  <div class="">
+    購入履歴
+  </div>
+
 </div>
