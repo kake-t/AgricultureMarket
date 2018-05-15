@@ -1,0 +1,27 @@
+ja:
+  activerecord:
+    models:
+      item: "商品"
+      user: "ユーザー"
+      comment: "コメント"
+      favorite: "お気に入り"
+      producer: "生産者"
+    attributes:
+      item:
+        item_name: "商品名"
+        item_image: "商品画像"
+        price: "価格"
+        item_content: "商品詳細"
+      user:
+        user_name: "名前"
+        email: "メールアドレス"
+        current_password: "現在のパスワード"
+        password: "パスワード"
+        password_confirmation: "確認用パスワード"
+        remember_me: "ログインを記憶"
+        user_icon: "ユーザーアイコン"
+      producer:
+        area: "生産地"
+        pesticide: "農薬"
+        producer_image: "生産者画像"
+        content: "生産者詳細"
