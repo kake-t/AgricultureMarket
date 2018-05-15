@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :users, only: [:show]
+  #ログイン、ユーザー情報更新後、ユーザー情報編集画面に飛ぶ
+  # as :user do
+  #   get 'users/edit', to: 'devise/registrations#edit', as: :user_root
+  # end
+  resources :users, only: [:show] do
+    resources :producers
+  end
+
   root 'items#index'
 
   resources :items do
