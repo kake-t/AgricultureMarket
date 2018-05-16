@@ -1,2 +1,6 @@
 <%= render 'form', producer: @producer %>
-destroy
+<%=
+link_to '生産者情報を削除する',
+user_producer_path(@producer.user_id, @producer),
+method: :delete, data: { confirm: '削除しますか？' }
+%>

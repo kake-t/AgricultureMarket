@@ -18,19 +18,22 @@
   </div>
 
   <div class="">
-    <% if @user.producer.id.nil? %>
+    <%# 生産者情報を持っている時、生産者情報を表示する %>
+    <% unless @user.producer.nil? %>
+      <div class="">
+        <p>生産者情報</p>
+        <%= render 'producers/params', producer: @producer %>
+      </div>
+    <% end %>
+
+    <% if @user.producer.nil? %>
       <%= link_to '生産者情報登録', new_user_producer_path(@user.id) %>
     <% else %>
       <%=
-      link_to '生産者情報編集',
-      edit_user_producer_path(@user.id, @user.producer.id)
+        link_to '生産者情報編集',
+        edit_user_producer_path(@user.id, @user.producer.id)
       %>
     <% end %>
-
-    <%=
-    link_to '生産者情報詳細',
-    user_producer_path(@user.id, @user.producer.id)
-    %>
   </div>
 
   <div class="">

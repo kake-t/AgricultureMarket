@@ -1,5 +1,5 @@
 class ProducersController < ApplicationController
-  before_action :set_producer, only: %i[show edit update]
+  before_action :set_producer, only: %i[show edit update destroy]
 
   def new
     @producer = Producer.new
@@ -10,7 +10,7 @@ class ProducersController < ApplicationController
     @producer = Producer.new(producer_params)
     @producer.user_id = current_user.id
     if @producer.save
-      redirect_to user_producer_path(@producer.user_id, @producer)
+      redirect_to user_path(current_user)
     else
       render 'new'
     end
@@ -22,10 +22,15 @@ class ProducersController < ApplicationController
 
   def update
     if @producer.update(producer_params)
-      redirect_to user_producer_path(@producer.user_id, @producer)
+      redirect_to user_path(current_user)
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    @producer.destroy
+    redirect_to user_path(current_user), notice: '生産者情報を削除しました'
   end
 
   private

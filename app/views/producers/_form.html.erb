@@ -8,7 +8,7 @@
 
     <div class="">
       <%= f.label :area %>
-      <%= f.text_field :area %>
+      <%= f.collection_select :area, JpPrefecture::Prefecture.all, :name, :name %>
     </div>
 
     <div class="">
