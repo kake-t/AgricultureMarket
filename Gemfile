@@ -28,6 +28,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'jp_prefecture'
 end
 
 group :development do

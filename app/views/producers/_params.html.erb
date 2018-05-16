@@ -1,0 +1,29 @@
+<div class="container">
+
+<%=
+  form_with model: producer, local: true,
+  url: user_producers_path(producer.user_id) do |f|
+%>
+
+  <div class="">
+    <%= f.label :producer_image %>
+    <%= image_tag producer.producer_image %>
+  </div>
+
+  <div class="">
+    <%= f.label :area %>
+    <%= producer.area %>
+  </div>
+
+  <div class="">
+    <%= f.label :pesticide %>
+    <%= indicate_pesticide %>
+  </div>
+
+  <div class="">
+    <%= f.label :content %>
+    <%= simple_format producer.content %>
+  </div>
+<% end %>
+
+</div>
