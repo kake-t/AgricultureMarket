@@ -18,8 +18,19 @@
   </div>
 
   <div class="">
-    生産者情報登録 or 生産者情報詳細 or 生産者情報編集
-    <%= link_to '生産者情報登録', new_user_producer_path(@user.id) %>
+    <% if @user.producer.id.nil? %>
+      <%= link_to '生産者情報登録', new_user_producer_path(@user.id) %>
+    <% else %>
+      <%=
+      link_to '生産者情報編集',
+      edit_user_producer_path(@user.id, @user.producer.id)
+      %>
+    <% end %>
+
+    <%=
+    link_to '生産者情報詳細',
+    user_producer_path(@user.id, @user.producer.id)
+    %>
   </div>
 
   <div class="">

@@ -1,5 +1,5 @@
 class ProducersController < ApplicationController
-  before_action :set_producer, only: %i[show]
+  before_action :set_producer, only: %i[show edit update]
 
   def new
     @producer = Producer.new
@@ -17,6 +17,16 @@ class ProducersController < ApplicationController
   end
 
   def show; end
+
+  def edit; end
+
+  def update
+    if @producer.update(producer_params)
+      redirect_to user_producer_path(@producer.user_id, @producer)
+    else
+      render 'edit'
+    end
+  end
 
   private
 

@@ -1,6 +1,6 @@
 <div class="container">
 
-  <%= form_with model: producer, local: true, url: user_producers_path(producer.user_id) do |f| %>
+  <%= form_with model: producer, local: true, url: choose_new_or_edit do |f| %>
     <div class="">
       <%= f.label :producer_image %>
       <%= f.file_field :producer_image %>
