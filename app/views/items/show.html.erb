@@ -1,35 +1,46 @@
 <%#詳細画面 %>
 <div class="container">
-<div class="">
-  <%= image_tag @item.item_image %>
-</div>
+  <div class="">
+    <%= image_tag @item.item_image %>
+  </div>
 
-<div class="">
-  商品名：<%= @item.item_name %>
-</div>
+  <div class="">
+    商品名：<%= @item.item_name %>
+  </div>
 
-<div class="">
-  価格：<%= @item.price %>円
-</div>
+  <div class="">
+    価格：<%= @item.price %>円
+  </div>
 
-<div class="">
-  出品時間<%= @item.created_at %>
-</div>
+  <div class="">
+    出品時間<%= @item.created_at %>
+  </div>
 
-<div class="">
-  生産者
-</div>
+  <div class="">
+    生産者
+    <%= link_to '生産者情報', user_path(@item.saler) %>
+  </div>
 
-<div class="">
-  生産地
-</div>
+  <div class="">
+    生産地
+  </div>
 
-<div class="">
-  <%= simple_format @item.item_content %>
-</div>
+  <div class="">
+    <%= simple_format @item.item_content %>
+  </div>
 
-<div class="">
-  購入ボタン
-</div>
+  <div class="">
+    購入ボタン
+  </div>
+
+  <% if current_user.id == @item.saler.id %>
+    <div class="">
+      <%= link_to '編集', edit_item_path(@item) %>
+    </div>
+
+    <div class="">
+      <%= link_to '削除', @item, method: :delete, data: {confirm: '削除しますか？'} %>
+    </div>
+  <% end %>
 
 </div>

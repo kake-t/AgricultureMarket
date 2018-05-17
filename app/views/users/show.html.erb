@@ -13,9 +13,11 @@
 
   <% end %>
 
-  <div class="">
-    <%= link_to 'ユーザー情報編集', edit_user_registration_path %>
-  </div>
+  <% if current_user == @user %>
+    <div class="">
+      <%= link_to 'ユーザー情報編集', edit_user_registration_path %>
+    </div>
+  <% end %>
 
   <div class="">
     <%# 生産者情報を持っている時、生産者情報を表示する %>
@@ -25,7 +27,9 @@
         <%= render 'producers/params', producer: @producer %>
       </div>
     <% end %>
+  </div>
 
+  <% if current_user == @user %>
     <% if @user.producer.nil? %>
       <%= link_to '生産者情報登録', new_user_producer_path(@user.id) %>
     <% else %>
@@ -34,6 +38,15 @@
         edit_user_producer_path(@user.id, @user.producer.id)
       %>
     <% end %>
+
+    <div class="">
+      購入履歴
+    </div>
+  <% end %>
+
+  <div class="">
+    出品中の商品
+    
   </div>
 
   <div class="">
@@ -42,10 +55,6 @@
 
   <div class="">
     フォロー一覧
-  </div>
-
-  <div class="">
-    購入履歴
   </div>
 
 </div>

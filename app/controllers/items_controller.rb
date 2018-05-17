@@ -1,6 +1,7 @@
 # items
 class ItemsController < ApplicationController
   before_action :set_item, only: %i[show update destroy]
+  before_action :check_current_user_producer_nil?, only: [:new]
 
   def top; end
 
@@ -10,15 +11,15 @@ class ItemsController < ApplicationController
 
   def new
     @item = if params[:back]
-              Item.new(item_params)
+              current_user.salling_items.new(item_params)
               @item.item_image.retrieve_from_cache! params[:cache][:item_image]
             else
-              Item.new
+              current_user.salling_items.new
             end
   end
 
   def create
-    @item = Item.new(item_params)
+    @item = current_user.salling_items.new(item_params)
     @item.item_image.retrieve_from_cache! params[:cache][:item_image]
     if @item.save
       redirect_to items_path, notice: '出品しました'
@@ -53,7 +54,7 @@ class ItemsController < ApplicationController
   end
 
   def confirm
-    @item = Item.new(item_params)
+    @item = current_user.salling_items.new(item_params)
     render 'new' if @item.invalid?
   end
 
@@ -71,5 +72,12 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def check_current_user_producer_nil?
+    if current_user.producer.nil?
+      redirect_to user_path(current_user),
+                  notice: '生産者情報を登録しなければ新規出品は出来ません'
+    end
   end
 end
