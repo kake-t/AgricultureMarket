@@ -14,4 +14,7 @@ class User < ApplicationRecord
   has_many :salling_items, -> { where("buyer_id is NULL") }, foreign_key: 'saler_id', class_name: 'Item', dependent: :destroy
   #userが「既に売った」商品
   has_many :sold_items, -> { where("buyer_id is not NULL") }, foreign_key: 'saler_id', class_name: 'Item', dependent: :destroy
+
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_items, through: :favorites, source: :item
 end
