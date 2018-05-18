@@ -28,7 +28,9 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @favorite = current_user.favorites.find_by(item_id: @item.id)
+  end
 
   def edit
     if params[:back]

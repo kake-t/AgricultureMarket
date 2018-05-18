@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   root 'items#index'
 
   resources :items do
+    resources :favorites, only: %i[create destroy]
     collection do
       post :confirm
     end
@@ -19,7 +20,5 @@ Rails.application.routes.draw do
     end
   end
 
-  if Rails.env.development?
-    mount LetterOpenerWeb::Engine, at: '/letter_opener'
-  end
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 end

@@ -1,0 +1,40 @@
+<div class="container">
+  <% items.each do |item| %>
+    <%= form_with model: item, local: true do |f| %>
+      <div class="">
+        <%= f.label :item_name %>
+        <%= item.item_name %>
+      </div>
+
+      <div class="">
+        <%= image_tag item.item_image %>
+      </div>
+
+      <div class="">
+        生産者：
+        <%= link_to item.saler.user_name, user_path(item.saler.id) %>
+      </div>
+
+      <div class="">
+        生産地：
+        <%= item.saler.producer.area %>
+      </div>
+
+      <div class="">
+        <%= f.label :price %>
+        <%= item.price %>円
+      </div>
+
+      <div class="">
+        <%= item.item_content %>
+      </div>
+
+      <div class="">
+        <%= link_to '詳細', item %>
+      </div>
+
+      <%= render 'items/edit_and_destroy', item: item %>
+
+    <% end %>
+  <% end %>
+</div>
