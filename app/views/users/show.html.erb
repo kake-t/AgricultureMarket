@@ -1,17 +1,7 @@
 <div class="container">
 
-  <%= form_with model: @user, local: true do |f| %>
-
-  <div class="">
-    <%= f.label :user_icon %>
-    <%= image_tag @user.user_icon %>
-  </div>
-  <div class="">
-    <%= f.label :user_name %>
-    <%= @user.user_name %>
-  </div>
-
-  <% end %>
+<%# user のデータ %>
+<%= render 'params', user: @user %>
 
   <% if current_user == @user %>
     <div class="">
@@ -45,9 +35,10 @@
   <% end %>
 
   <div class="">
-    出品中の商品
-    
+    出品中一覧
   </div>
+  <%# 出品中の商品を表示 %>
+  <%= render 'items/items_each', items: @user.salling_items %>
 
   <div class="">
     お気に入り一覧
