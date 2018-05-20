@@ -10,7 +10,16 @@
 </div>
 
 <div class="">
-  フォローボタン
+  <%# フォローボタン %>
+  <% unless current_user.active_relationships.find_by(followed_id: @user.id) %>
+  <%= link_to 'フォロー', user_relationships_path(@user.id), method: :post %>
+  <% else %>
+  <%=
+    link_to 'フォロー解除',
+    user_relationship_path(@user.id, Relationship.find_by(followed_id: @user.id).id),
+    method: :delete
+  %>
+  <% end %>
 </div>
 
 <% end %>
