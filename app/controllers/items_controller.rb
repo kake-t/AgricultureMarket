@@ -79,7 +79,7 @@ class ItemsController < ApplicationController
   def check_current_user_producer_nil?
     if current_user.producer.nil?
       redirect_to user_path(current_user),
-                  notice: '生産者情報を登録しなければ新規出品は出来ません'
+                  notice: '生産者情報を登録してから出品してください'
     end
   end
 end
