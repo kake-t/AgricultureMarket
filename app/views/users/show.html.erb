@@ -40,16 +40,17 @@
   <% end %>
 
   <%# 出品中の商品を表示 %>
-  <%= render 'items/index', items: @user.salling_items %>
+  <%= render 'items/list', items: @user.salling_items %>
 
   <div class="">
     お気に入り一覧
   </div>
   <%# お気に入り一覧を表示 %>
-  <%= render 'favorites/index', user: @user %>
+  <%= render 'favorites/item_list', user: @user %>
 
   <div class="">
     フォロー一覧
+    <%= render 'relationships/following_list', user: current_user %>
   </div>
 
 </div>
