@@ -6,9 +6,8 @@ Rails.application.routes.draw do
   # end
   resources :users, only: [:show] do
     resources :producers, except: [:index]
+    resources :relationships, only: %i[create destroy]
   end
-
-  root 'items#index'
 
   resources :items do
     resources :favorites, only: %i[create destroy]
@@ -20,5 +19,6 @@ Rails.application.routes.draw do
     end
   end
 
+  root 'items#index'
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 end
