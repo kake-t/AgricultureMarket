@@ -8,13 +8,26 @@ class User < ApplicationRecord
 
   # association
   has_one :producer, dependent: :destroy
-  #userが「買った」商品
-  has_many :buyed_items, foreign_key: 'buyer_id', class_name: 'Item', dependent: :destroy
-  #userが 「現在売っている」商品
-  has_many :salling_items, -> { where("buyer_id is NULL") }, foreign_key: 'saler_id', class_name: 'Item', dependent: :destroy
-  #userが「既に売った」商品
-  has_many :sold_items, -> { where("buyer_id is not NULL") }, foreign_key: 'saler_id', class_name: 'Item', dependent: :destroy
+  # userが「買った」商品
+  has_many :buyed_items, foreign_key: 'buyer_id',
+                         class_name: 'Item',
+                         dependent: :destroy
+  # userが 「現在売っている」商品
+  has_many :salling_items, -> { where('buyer_id is NULL') },
+           foreign_key: 'saler_id', class_name: 'Item', dependent: :destroy
+  # userが「既に売った」商品
+  has_many :sold_items, -> { where('buyer_id is not NULL') },
+           foreign_key: 'saler_id', class_name: 'Item', dependent: :destroy
 
   has_many :favorites, dependent: :destroy
   has_many :favorite_items, through: :favorites, source: :item
+
+  has_many :active_relationships, foreign_key: 'follower_id',
+                                  class_name: 'Relationship',
+                                  dependent: :destroy
+  has_many :passive_relationships, foreign_key: 'followed_id',
+                                   class_name: 'Relationship',
+                                   dependent: :destroy
+  has_many :following, through: :active_relationships, source: :followed
+  has_many :followed, through: :passive_relationships, source: :follower
 end
