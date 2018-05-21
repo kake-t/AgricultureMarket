@@ -30,4 +30,21 @@ class User < ApplicationRecord
                                    dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followed, through: :passive_relationships, source: :follower
+
+  hasmany :comments, dependent: :destroy
+
+  #指定のユーザーをフォローする
+  def follow!(other_user)
+    active_relationships.create!(followed_id: other_user.id)
+  end
+
+  #指定のユーザーのフォローを解除する
+  def unfollow!(other_user)
+    active_relationships.find_by(followed_id: other_user.id).destroy
+  end
+
+  #フォローしているか確認する
+  def following?(other_user)
+    active_relationships.find_by(followed_id: other_user.id)
+  end
 end

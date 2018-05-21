@@ -29,22 +29,25 @@
     <%= simple_format @item.item_content %>
   </div>
 
-  <div class="">
-    <%= render 'favorites/switch' %>
-  </div>
-
-  <div class="">
-    購入ボタン
-  </div>
-
-  <% if current_user.id == @item.saler.id %>
+  <% if user_signed_in? %>
     <div class="">
-      <%= link_to '編集', edit_item_path(@item) %>
+      <%= render 'favorites/switch' %>
     </div>
 
     <div class="">
-      <%= link_to '削除', @item, method: :delete, data: {confirm: '削除しますか？'} %>
+      購入ボタン
     </div>
+
+
+    <% if current_user.id == @item.saler.id %>
+      <div class="">
+        <%= link_to '編集', edit_item_path(@item) %>
+      </div>
+
+      <div class="">
+        <%= link_to '削除', @item, method: :delete, data: {confirm: '削除しますか？'} %>
+      </div>
+    <% end %>
   <% end %>
 
 </div>

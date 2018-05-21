@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :items do
     resources :favorites, only: %i[create destroy index]
+    resources :comments
     collection do
       post :confirm
     end

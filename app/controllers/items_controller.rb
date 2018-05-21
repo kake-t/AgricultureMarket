@@ -29,7 +29,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @favorite = current_user.favorites.find_by(item_id: @item.id)
+    @favorite = current_user.favorites.find_by(item_id: @item.id) if user_signed_in?
   end
 
   def edit
