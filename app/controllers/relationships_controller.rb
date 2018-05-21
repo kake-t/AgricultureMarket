@@ -1,4 +1,9 @@
 class RelationshipsController < ApplicationController
+  def index
+    @user = User.find(params[:user_id])
+    @users = @user.following
+  end
+
   def create
     @user = User.find(params[:user_id])
     current_user.active_relationships.create!(followed_id: @user.id)

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # end
   resources :users, only: [:show] do
     resources :producers, except: [:index]
-    resources :relationships, only: %i[create destroy]
+    resources :relationships, only: %i[create destroy index]
   end
 
   resources :items do

@@ -49,8 +49,7 @@
   <%= render 'favorites/item_list', user: @user %>
 
   <div class="">
-    フォロー一覧
-    <%= render 'relationships/following_list', user: current_user %>
+    <%= link_to 'フォロー一覧', user_relationships_path(@user.id) %>
   </div>
 
 </div>
