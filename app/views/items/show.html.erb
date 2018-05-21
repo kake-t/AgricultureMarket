@@ -38,6 +38,11 @@
       購入ボタン
     </div>
 
+    <div id="comments_area">
+      コメント機能
+      <%= render 'comments/index', {comments: @comments} %>
+    </div>
+      <%= render 'comments/form', {item: @item, comment: @comment} %>
 
     <% if current_user.id == @item.saler.id %>
       <div class="">

@@ -29,7 +29,11 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @favorite = current_user.favorites.find_by(item_id: @item.id) if user_signed_in?
+    if user_signed_in?
+      @favorite = current_user.favorites.find_by(item_id: @item.id)
+      @comment = @item.comments.new
+      @comments = @item.comments
+    end
   end
 
   def edit
