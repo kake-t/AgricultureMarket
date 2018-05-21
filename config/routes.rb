@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :items do
-    resources :favorites, only: %i[create destroy]
+    resources :favorites, only: %i[create destroy index]
     collection do
       post :confirm
     end

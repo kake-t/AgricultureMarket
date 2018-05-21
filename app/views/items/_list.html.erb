@@ -7,7 +7,7 @@
       </div>
 
       <div class="">
-        <%= image_tag item.item_image %>
+        <%= link_to image_tag(item.item_image_url), user_path(item.saler.id) %>
       </div>
 
       <div class="">

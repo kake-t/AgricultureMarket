@@ -43,10 +43,8 @@
   <%= render 'items/list', items: @user.salling_items %>
 
   <div class="">
-    お気に入り一覧
+    <%= link_to 'お気に入り一覧', item_favorites_path(@user.id) %>
   </div>
-  <%# お気に入り一覧を表示 %>
-  <%= render 'favorites/item_list', user: @user %>
 
   <div class="">
     <%= link_to 'フォロー一覧', user_relationships_path(@user.id) %>
