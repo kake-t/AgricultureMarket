@@ -1,5 +1,5 @@
 <div class="container">
-  <%= form_with model: [item, comment], local: true do |f| %>
+  <%= form_with model: [item, comment] do |f| %>
     <% if comment.errors.any? %>
     <ul>
       <% comment.errors.full_messages.each do |message| %>

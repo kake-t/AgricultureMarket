@@ -29,7 +29,6 @@
     <%= simple_format @item.item_content %>
   </div>
 
-  <% if user_signed_in? %>
     <div class="">
       <%= render 'favorites/switch' %>
     </div>
@@ -38,8 +37,9 @@
       購入ボタン
     </div>
 
+  <% if user_signed_in? %>
+    <h4>コメント一覧</h4>
     <div id="comments_area">
-      コメント機能
       <%= render 'comments/index', {comments: @comments} %>
     </div>
       <%= render 'comments/form', {item: @item, comment: @comment} %>
