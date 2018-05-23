@@ -1,46 +1,20 @@
-<%#詳細画面 %>
+<%#商品詳細画面 %>
 <div class="container">
-  <div class="">
-    <%= image_tag @item.item_image %>
-  </div>
-
-  <div class="">
-    商品名：<%= @item.item_name %>
-  </div>
-
-  <div class="">
-    価格：<%= @item.price %>円
-  </div>
-
-  <div class="">
-    出品時間<%= @item.created_at %>
-  </div>
-
-  <div class="">
-    生産者
-    <%= link_to '生産者情報', user_path(@item.saler) %>
-  </div>
-
-  <div class="">
-    生産地
-  </div>
-
-  <div class="">
-    <%= simple_format @item.item_content %>
-  </div>
+  <%= render 'items/params', item: @item %>
 
     <div class="">
       <%= render 'favorites/switch' %>
     </div>
 
     <div class="">
-      購入ボタン
+      <%= link_to '購入申請', buy_confirm_item_path(@item) %>
     </div>
 
   <% if user_signed_in? %>
+  <%# コメント機能 %>
     <h4>コメント一覧</h4>
     <div id="comments_area">
-      <%= render 'comments/index', {comments: @comments} %>
+      <%= render 'comments/index', comments: @comments %>
     </div>
       <%= render 'comments/form', {item: @item, comment: @comment} %>
 

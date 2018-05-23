@@ -1,6 +1,6 @@
 # items
 class ItemsController < ApplicationController
-  before_action :set_item, only: %i[show update destroy]
+  before_action :set_item, only: %i[show update destroy buy_confirm]
   before_action :check_current_user_producer_nil?, only: [:new]
 
   def top; end
@@ -63,6 +63,8 @@ class ItemsController < ApplicationController
     @item = current_user.salling_items.new(item_params)
     render 'new' if @item.invalid?
   end
+
+  def buy_confirm; end
 
   private
 
