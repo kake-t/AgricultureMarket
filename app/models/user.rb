@@ -33,6 +33,8 @@ class User < ApplicationRecord
 
   has_many :comments, dependent: :destroy
 
+  has_many :transactions, dependent: :destroy
+
   #指定のユーザーをフォローする
   def follow!(other_user)
     active_relationships.create!(followed_id: other_user.id)

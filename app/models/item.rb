@@ -8,4 +8,6 @@ class Item < ApplicationRecord
   has_many :favorite_users, through: :favorites, source: :user
 
   has_many :comments, dependent: :destroy
+
+  has_many :transactions, dependent: :destroy
 end
