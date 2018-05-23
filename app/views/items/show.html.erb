@@ -6,9 +6,11 @@
       <%= render 'favorites/switch' %>
     </div>
 
+  <% if @item.saler_id != current_user.id %>
     <div class="">
-      <%= link_to '購入申請', buy_confirm_item_path(@item) %>
+      <%= link_to '購入申請', buy_confirm_item_path(@item) if @item.buyer_id.nil? %>
     </div>
+  <% end %>
 
   <% if user_signed_in? %>
   <%# コメント機能 %>
