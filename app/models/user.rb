@@ -13,11 +13,11 @@ class User < ApplicationRecord
                          class_name: 'Item',
                          dependent: :destroy
   # userが 「現在売っている」商品
-  has_many :salling_items, -> { where('buyer_id is NULL') },
-           foreign_key: 'saler_id', class_name: 'Item', dependent: :destroy
+  has_many :selling_items, -> { where('buyer_id is NULL') },
+           foreign_key: 'seller_id', class_name: 'Item', dependent: :destroy
   # userが「既に売った」商品
   has_many :sold_items, -> { where('buyer_id is not NULL') },
-           foreign_key: 'saler_id', class_name: 'Item', dependent: :destroy
+           foreign_key: 'seller_id', class_name: 'Item', dependent: :destroy
 
   has_many :favorites, dependent: :destroy
   has_many :favorite_items, through: :favorites, source: :item

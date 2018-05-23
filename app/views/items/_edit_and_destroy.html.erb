@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-  <% if current_user.id == item.saler.id %>
+  <% if current_user.id == item.seller.id %>
     <div class="">
       <%= link_to '編集', edit_item_path(item) %>
     </div>

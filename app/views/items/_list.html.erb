@@ -7,17 +7,17 @@
       </div>
 
       <div class="">
-        <%= link_to image_tag(item.item_image_url), user_path(item.saler.id) %>
+        <%= link_to image_tag(item.item_image_url), user_path(item.seller.id) %>
       </div>
 
       <div class="">
         生産者：
-        <%= link_to item.saler.user_name, user_path(item.saler.id) %>
+        <%= link_to item.seller.user_name, user_path(item.seller.id) %>
       </div>
 
       <div class="">
         生産地：
-        <%= item.saler.producer.area %>
+        <%= item.seller.producer.area %>
       </div>
 
       <div class="">

@@ -11,15 +11,15 @@ class ItemsController < ApplicationController
 
   def new
     @item = if params[:back]
-              current_user.salling_items.new(item_params)
+              current_user.selling_items.new(item_params)
               @item.item_image.retrieve_from_cache! params[:cache][:item_image]
             else
-              current_user.salling_items.new
+              current_user.selling_items.new
             end
   end
 
   def create
-    @item = current_user.salling_items.new(item_params)
+    @item = current_user.selling_items.new(item_params)
     @item.item_image.retrieve_from_cache! params[:cache][:item_image]
     if @item.save
       redirect_to items_path, notice: '出品しました'
@@ -60,7 +60,7 @@ class ItemsController < ApplicationController
   end
 
   def confirm
-    @item = current_user.salling_items.new(item_params)
+    @item = current_user.selling_items.new(item_params)
     render 'new' if @item.invalid?
   end
 

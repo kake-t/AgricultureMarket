@@ -1,4 +1,4 @@
-<% unless current_user == @item.saler %>
+<% unless current_user == @item.seller %>
   <% if @favorite.nil? %>
     <%=
       link_to 'お気に入り', item_favorites_path(@item.id),
