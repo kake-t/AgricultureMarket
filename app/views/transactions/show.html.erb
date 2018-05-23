@@ -1,0 +1,24 @@
+<div class="">
+  出品者にメールを送信しました。出品者からの連絡をお待ち下さい
+</div>
+
+<h5>商品が届いたら下記のボタンを押してください</h5>
+
+<div class="">
+  商品受け取り完了ボタン
+  <%= form_with model: @transaction.item, local: true, url: buy_complete_item_path(@transaction.item_id) do |f| %>
+    <% if @transaction.errors.any? %>
+      <div class="">
+        <% @transaction.errors.full_messages.each do |message| %>
+          <p><%= message %></p>
+        <% end %>
+      </div>
+    <% end %>
+
+    <%= f.submit '受取完了', data: {confirm: '商品が届きましたか？'} %>
+  <% end %>
+</div>
+
+<div class="">
+  商品一覧に戻る
+</div>

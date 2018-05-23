@@ -17,9 +17,12 @@ Rails.application.routes.draw do
     end
     member do
       patch :confirm
+      patch :buy_complete
       get :buy_confirm
     end
   end
+
+  resources :transactions, only: %i[create show index]
 
   root 'items#index'
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?

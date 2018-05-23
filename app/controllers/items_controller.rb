@@ -1,6 +1,6 @@
 # items
 class ItemsController < ApplicationController
-  before_action :set_item, only: %i[show update destroy buy_confirm]
+  before_action :set_item, only: %i[show update destroy buy_confirm buy_complete]
   before_action :check_current_user_producer_nil?, only: [:new]
 
   def top; end
@@ -64,7 +64,20 @@ class ItemsController < ApplicationController
     render 'new' if @item.invalid?
   end
 
-  def buy_confirm; end
+  def buy_confirm
+    @trensaction = Transaction.new
+  end
+
+  def buy_complete
+    @item.buyer_id = current_user.id
+    @item.state = true
+    if @item.save
+      @transaction = Transaction.find_by(item_id: params[:id]).destroy
+      redirect_to items_path, notice: '受取完了しました'
+    else
+      render 'transactions/new'
+    end
+  end
 
   private
 
