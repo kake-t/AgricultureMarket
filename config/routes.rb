@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :relationships, only: %i[create destroy index]
     member do
       get :buy_history
+      get :selling_items
     end
   end
 
