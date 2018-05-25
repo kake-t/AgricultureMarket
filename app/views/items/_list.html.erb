@@ -1,7 +1,7 @@
 <div class="container">
   <% items.each do |item| %>
     <%= form_with model: item, local: true do |f| %>
-      <% next if item.buyer_id.present? unless action_name == 'buy_history' %>
+      <% next if item.buyer_id.present? unless buy_history_or_sold_items %>
       <div class="">
         <%= f.label :item_name %>
         <%= item.item_name %>

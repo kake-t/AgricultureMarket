@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     member do
       get :buy_history
       get :selling_items
+      get :sold_items
     end
   end
 

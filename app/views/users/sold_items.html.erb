@@ -1,0 +1,7 @@
+<% if @user.sold_items.empty? %>
+  <div class="container">
+    <h4>売却済の商品はありません</h4>
+  </div>
+<% end %>
+
+<%= render 'items/list', items: @user.sold_items %>

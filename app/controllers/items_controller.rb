@@ -2,6 +2,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: %i[show update destroy buy_confirm buy_complete]
   before_action :check_current_user_producer_nil?, only: [:new]
+  before_action :check_item_state, only: [:edit]
 
   def top; end
 
@@ -99,6 +100,14 @@ class ItemsController < ApplicationController
     if current_user.producer.nil?
       redirect_to user_path(current_user),
                   notice: '生産者情報を登録してから出品してください'
+    end
+  end
+
+  def check_item_state
+    set_item
+    if @item.state == true
+      redirect_to sold_items_user_path(current_user.id),
+                  notice: '売却済の商品は編集できません'
     end
   end
 end

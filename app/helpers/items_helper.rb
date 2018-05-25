@@ -38,4 +38,8 @@ module ItemsHelper
       edit_item_path(params[:id])
     end
   end
+
+  def buy_history_or_sold_items
+    action_name == 'buy_history' || action_name == 'sold_items'
+  end
 end

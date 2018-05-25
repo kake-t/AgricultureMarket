@@ -16,15 +16,7 @@
     </div>
       <%= render 'comments/form', {item: @item, comment: @comment} %>
 
-    <% if current_user.id == @item.seller.id %>
-      <div class="">
-        <%= link_to '編集', edit_item_path(@item) %>
-      </div>
-
-      <div class="">
-        <%= link_to '削除', @item, method: :delete, data: {confirm: '削除しますか？'} %>
-      </div>
-    <% end %>
+    <%= render 'items/edit_and_destroy', item: @item %>
   <% end %>
 
 </div>
