@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     resources :producers, except: [:index]
     resources :relationships, only: %i[create destroy index]
+    member do
+      get :buy_history
+    end
   end
 
   resources :items do

@@ -41,6 +41,9 @@
 
     <div class="">
       購入履歴
+      <% @user.buyed_items.each do |item| %>
+        <%= link_to '購入履歴', buy_history_user_path(@user) %>
+      <% end %>
     </div>
   <% end %>
 

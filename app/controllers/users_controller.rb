@@ -4,4 +4,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @producer = @user.producer
   end
+
+  def buy_history
+    @user = User.find(params[:id])
+  end
 end

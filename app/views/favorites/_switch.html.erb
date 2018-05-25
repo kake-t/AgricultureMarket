@@ -1,13 +1,17 @@
-<% unless current_user == @item.seller %>
-  <% if @favorite.nil? %>
-    <%=
-      link_to 'お気に入り', item_favorites_path(@item.id),
-      method: :post, class: 'btn btn-primary'
-    %>
-  <% else %>
-    <%=
-      link_to 'お気に入り解除', item_favorite_path(@item.id, @favorite.id),
-      method: :delete, class: 'btn btn-danger'
-    %>
+<div class="">
+  <% if @item.buyer_id.nil? %>
+    <% unless current_user == @item.seller %>
+      <% if @favorite.nil? %>
+        <%=
+          link_to 'お気に入り', item_favorites_path(@item.id),
+          method: :post, class: 'btn btn-primary'
+        %>
+      <% else %>
+        <%=
+          link_to 'お気に入り解除', item_favorite_path(@item.id, @favorite.id),
+          method: :delete, class: 'btn btn-danger'
+        %>
+      <% end %>
+    <% end %>
   <% end %>
-<% end %>
+</div>

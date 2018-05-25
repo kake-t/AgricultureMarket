@@ -2,15 +2,11 @@
 <div class="container">
   <%= render 'items/params', item: @item %>
 
-    <div class="">
-      <%= render 'favorites/switch' %>
-    </div>
+<%# お気に入りボタン %>
+  <%= render 'favorites/switch' %>
 
-  <% if @item.seller_id != current_user.id %>
-    <div class="">
-      <%= link_to '購入申請', buy_confirm_item_path(@item) if @item.buyer_id.nil? %>
-    </div>
-  <% end %>
+<%# 購入申請ボタン %>
+  <%= render 'items/buy_request' %>
 
   <% if user_signed_in? %>
   <%# コメント機能 %>

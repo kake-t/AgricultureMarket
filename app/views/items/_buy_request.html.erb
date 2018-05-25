@@ -1,0 +1,19 @@
+<div class="">
+
+  <% if @item.seller_id != current_user.id %>
+    <div class="">
+      <%= link_to '購入申請', buy_confirm_item_path(@item) if @item.buyer_id.nil? %>
+    </div>
+  <% end %>
+
+  <% if @item.buyer_id == current_user.id %>
+    <div class="">
+      <h4>この商品は購入済です</h4>
+    </div>
+  <% elsif @item.buyer_id.present? && @item.buyer_id != current_user.id %>
+    <div class="">
+      <h4>この商品は出品終了です</h4>
+    </div>
+  <% end %>
+
+</div>
