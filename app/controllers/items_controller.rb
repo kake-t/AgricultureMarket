@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
   def new
     @item = if params[:back]
               current_user.selling_items.new(item_params)
-              @item.item_image.retrieve_from_cache! params[:cache][:item_image]
+              @item.item_image.retrieve_from_cache!(params[:cache][:item_image])
             else
               current_user.selling_items.new
             end
@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = current_user.selling_items.new(item_params)
-    @item.item_image.retrieve_from_cache! params[:cache][:item_image]
+    @item.item_image.retrieve_from_cache!(params[:cache][:item_image])
     if @item.save
       redirect_to items_path, notice: '出品しました'
     else
@@ -47,7 +47,7 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item.item_image.retrieve_from_cache! params[:cache][:item_image]
+    @item.item_image.retrieve_from_cache!(params[:cache][:item_image])
     if @item.update(item_params)
       redirect_to items_path, notice: '編集しました'
     else

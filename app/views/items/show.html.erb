@@ -8,15 +8,7 @@
 <%# 購入申請ボタン %>
   <%= render 'items/buy_request' %>
 
-  <% if user_signed_in? %>
-  <%# コメント機能 %>
-    <h4>コメント一覧</h4>
-    <div id="comments_area">
-      <%= render 'comments/index', comments: @comments %>
-    </div>
-      <%= render 'comments/form', {item: @item, comment: @comment} %>
-
-    <%= render 'items/edit_and_destroy', item: @item %>
-  <% end %>
+<%# コメント機能 %>
+  <%= render 'comments/comment_area' %>
 
 </div>
