@@ -20,9 +20,12 @@
 
 <%# 購入申請をキャンセルする %>
   <div class="">
-    購入キャンセルボタン
+    <%=
+      link_to '購入キャンセル', transaction_path(@transaction),
+              method: :delete, data: {confirm: 'キャンセルしてよろしいですか？'}
+    %>
   </div>
 
 <div class="">
-  商品一覧に戻る
+  <%= link_to '商品一覧に戻る', items_path %>
 </div>
