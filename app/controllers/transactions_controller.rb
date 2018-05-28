@@ -2,6 +2,7 @@ class TransactionsController < ApplicationController
   def create
     @transaction = current_user.transactions.new(transaction_params)
     if @transaction.save
+      #メール送信
       redirect_to @transaction
     else
       render 'items/buy_confirm'
