@@ -11,12 +11,12 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = if params[:back]
-              current_user.selling_items.new(item_params)
-              @item.item_image.retrieve_from_cache!(params[:cache][:item_image])
-            else
-              current_user.selling_items.new
-            end
+    if params[:back]
+      @item = current_user.selling_items.new(item_params)
+      @item.item_image.retrieve_from_cache!(params[:cache][:item_image])
+    else
+      @item = current_user.selling_items.new
+    end
   end
 
   def create
