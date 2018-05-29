@@ -4,13 +4,15 @@ class TransactionMailer < ApplicationMailer
     mail to: @user.email, subject: '購入申請完了のメール'
   end
 
-  def seller_mail(user)
+  def seller_mail(user, buyer)
     @user = user
+    @buyer = buyer
     mail to: @user.email, subject: '購入申請受付のメール'
   end
 
-  def buy_cancel(user)
+  def cancel_mail(user, buyer)
     @user = user
+    @buyer = buyer
     mail to: @user.email, subject: '購入キャンセルのお知らせ'
   end
 end

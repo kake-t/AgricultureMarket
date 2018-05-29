@@ -1,8 +1,10 @@
 <div class="container">
   <% unless @transactions.empty? %>
+
     <% @transactions.each do |transaction| %>
       <p><%= link_to "#{transaction.item.item_name}", transaction %></p>
     <% end %>
+
   <% else %>
     <h3>取引中の商品がありません</h3>
   <% end %>

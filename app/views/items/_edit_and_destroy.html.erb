@@ -3,9 +3,12 @@
     <div class="">
       <%= link_to '編集', edit_item_path(item) if item.buyer_id.nil? %>
     </div>
+  <% end %>
 
+  <% if current_user.id == item.seller.id || current_user.id == item.buyer.id %>
     <div class="">
       <%= link_to '削除', item, method: :delete, data: {confirm: '削除しますか？'} %>
     </div>
   <% end %>
+
 <% end %>
