@@ -39,7 +39,7 @@ module ItemsHelper
     end
   end
 
-  def buy_history_or_sold_items
+  def skip_actions
     action_name == 'buy_history' || action_name == 'sold_items'
   end
 

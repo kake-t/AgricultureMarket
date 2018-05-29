@@ -74,6 +74,7 @@ class ItemsController < ApplicationController
     @item.state = true
     if @item.save
       @transaction = Transaction.find_by(item_id: params[:id]).destroy
+      @item.favorites.find_by(item_id: @item.id).destroy
       redirect_to items_path, notice: '受取完了しました'
     else
       render 'transactions/new'
