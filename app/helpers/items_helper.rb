@@ -42,4 +42,12 @@ module ItemsHelper
   def buy_history_or_sold_items
     action_name == 'buy_history' || action_name == 'sold_items'
   end
+
+  def are_you_buyer?(item)
+    if item.buyer.nil?
+      false
+    else
+      current_user.id == item.buyer.id
+    end
+  end
 end
