@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   #   get 'users/edit', to: 'devise/registrations#edit', as: :user_root
   # end
   resources :users, only: [:show] do
-    resources :producers, except: [:index]
+    resources :producers, except: %i[index destory]
     resources :relationships, only: %i[create destroy index]
     member do
       get :buy_history
