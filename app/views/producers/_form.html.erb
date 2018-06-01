@@ -8,13 +8,21 @@
 
     <div class="">
       <%= f.label :area %>
-      <%= f.collection_select :area, JpPrefecture::Prefecture.all, :name, :name %>
+      <% if producer.area.nil? %>
+        <%= f.collection_select :area, JpPrefecture::Prefecture.all, :name, :name %>
+      <% else %>
+        <%= producer.area %>
+      <% end %>
     </div>
 
     <div class="">
       <%= f.label :pesticide %>
-      <label><%= f.radio_button :pesticide, false %>有り</label>
-      <label><%= f.radio_button :pesticide, true %>無し</label>
+      <% if producer.pesticide.nil? %>
+        <label><%= f.radio_button :pesticide, false %>有り</label>
+        <label><%= f.radio_button :pesticide, true %>無し</label>
+      <% else %>
+        <%= indicate_pesticide %>
+      <% end %>
     </div>
 
     <div class="">
@@ -23,7 +31,7 @@
     </div>
 
     <div class="">
-      <%= f.submit %>
+      <%= f.submit data: {confirm: "※登録後削除できません\nまた、生産地、農薬の有無は変更できません。\n登録してよろしいですか？"}%>
     </div>
   <% end %>
 
