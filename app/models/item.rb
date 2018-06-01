@@ -11,7 +11,9 @@ class Item < ApplicationRecord
 
   has_many :transactions, dependent: :destroy
 
-  validates :item_name, presence: true,
-                        length: {maximum: 150}
+  validates :item_name, presence: true, length: { maximum: 150 }
   validates :item_image, presence: true
+  validates :state, inclusion: { in: [true, false] }
+  validates :price, numericality: { only_integer: true }, length: { maximum: 7 }
+  validates :item_content, presence: true, length: { maximum: 5000 }
 end
