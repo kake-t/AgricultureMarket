@@ -12,7 +12,6 @@
   <%= form_with model: item, local: true, url: choose_url_new_or_edit, method: choose_method_new_or_edit do |f| %>
     <div class="">
       <%= image_tag item.item_image %>
-      <%= image_tag @item_image.item_image.url if @item_image.present? %>
     </div>
 
     <div class="">
@@ -23,7 +22,7 @@
     <div class="">
       <%= f.label :item_image %>
       <%= f.file_field :item_image %>
-      <%= f.hidden_field :image_cache %>
+      <%= f.hidden_field :item_image_cache %>
     </div>
 
     <div class="">

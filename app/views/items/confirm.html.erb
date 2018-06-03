@@ -37,7 +37,7 @@
       <%= f.hidden_field :item_name %>
       <%= f.hidden_field :price %>
       <%= f.hidden_field :item_content %>
-      <%= hidden_field_tag :"item[item_image]", @item.item_image.cache_name %>
+      <%= hidden_field_tag :"cache[item_image]", @item.item_image.cache_name %>
       <%= f.submit 'いいえ', name: :back %>
     <% end %>
   </div>
