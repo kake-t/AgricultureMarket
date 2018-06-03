@@ -29,6 +29,6 @@ Rails.application.routes.draw do
 
   resources :transactions, only: %i[create show index destroy]
 
-  root 'items#index'
+  root to: 'items#index'
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 end
