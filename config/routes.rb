@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users
+  # devise_for :users
+  devise_for :users, controllers: {
+        registrations: 'users/registrations'
+      }
+
   #ログイン、ユーザー情報更新後、ユーザー情報編集画面に飛ぶ
   # as :user do
   #   get 'users/edit', to: 'devise/registrations#edit', as: :user_root
