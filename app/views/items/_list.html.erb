@@ -1,45 +1,51 @@
-<div class="container">
-  <% items.each do |item| %>
-    <%= form_with model: item, local: true do |f| %>
-      <% next if item.buyer_id.present? unless skip_actions %>
-      <div class="">
-        <%= f.label :item_name %>
-        <%= item.item_name %>
-      </div>
+<div class="row">
+  <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+    <% items.each do |item| %>
+      <%= form_with model: item, local: true do |f| %>
 
-      <div class="">
-        <%= link_to image_tag(item.item_image_url), user_path(item.seller.id) %>
-      </div>
+        <div class="card h-100">
 
-      <% unless item.buyer_id.nil? %>
-        <h4>出品終了</h4>
+          <% next if item.buyer_id.present? unless skip_actions %>
+
+          <div class="">
+            <%= link_to image_tag(item.item_image_url), user_path(item.seller.id) %>
+          </div>
+
+          <div class="card-body">
+            <div class="card-title">
+              <%= link_to item.item_name, item %>
+            </div>
+
+            <% unless item.buyer_id.nil? %>
+              <h4>出品終了</h4>
+            <% end %>
+
+            <div class="card-text">
+
+              <div class="">
+                生産者：
+                <%= link_to item.seller.user_name, user_path(item.seller.id) %>
+              </div>
+
+              <div class="">
+                生産地：
+                <%= item.seller.producer.area %>
+              </div>
+
+              <div class="">
+                <%= f.label :price %>
+                <%= item.price %>円
+              </div>
+
+              <div class="">
+                <%= item.item_content %>
+              </div>
+
+              <%= render 'items/links', item: item %>
+            </div>
+          </div>
+        </div>
       <% end %>
-
-      <div class="">
-        生産者：
-        <%= link_to item.seller.user_name, user_path(item.seller.id) %>
-      </div>
-
-      <div class="">
-        生産地：
-        <%= item.seller.producer.area %>
-      </div>
-
-      <div class="">
-        <%= f.label :price %>
-        <%= item.price %>円
-      </div>
-
-      <div class="">
-        <%= item.item_content %>
-      </div>
-
-      <div class="">
-        <%= link_to '詳細', item %>
-      </div>
-
-      <%= render 'items/links', item: item %>
-
     <% end %>
-  <% end %>
+  </div>
 </div>
