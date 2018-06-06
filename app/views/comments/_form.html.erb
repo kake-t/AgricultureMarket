@@ -1,15 +1,15 @@
 <div class="container">
-  <%= form_with model: [item, comment] do |f| %>
-    <% if comment.errors.any? %>
-    <ul>
-      <% comment.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
+  <% if comment.errors.any? %>
+  <ul>
+    <% comment.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
     <% end %>
+  </ul>
+  <% end %>
+
+  <%= form_with model: [item, comment] do |f| %>
 
     <div class="">
-      <%= f.label :content %>
       <%= f.text_area :content %>
     </div>
 

@@ -1,14 +1,15 @@
 <%#商品詳細画面 %>
-<div class="row">
+<div class="">
   <%= render 'items/params', item: @item %>
 
 <%# お気に入りボタン %>
-  <%# render 'favorites/switch' %>
+  <%= render 'favorites/switch' %>
 
 <%# 購入申請ボタン %>
-  <%# render 'items/buy_request' %>
+  <%= render 'items/buy_request' %>
 
 <%# コメント機能 %>
-  <%# render 'comments/comment_area' %>
+  <%= render 'comments/comment_area' %>
 
+  <%= render 'items/links', item: @item %>
 </div>

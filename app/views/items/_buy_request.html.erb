@@ -2,7 +2,10 @@
 
   <% if @item.seller_id != current_user.id %>
     <div class="">
-      <%= link_to '購入申請', buy_confirm_item_path(@item) if @item.buyer_id.nil? %>
+      <%=
+        link_to '購入申請', buy_confirm_item_path(@item),
+        class: "btn btn-success" if @item.buyer_id.nil?
+      %>
     </div>
   <% end %>
 

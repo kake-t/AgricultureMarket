@@ -1,10 +1,9 @@
 <% if user_signed_in? %>
 <%# コメント機能 %>
-  <h4>コメント一覧</h4>
+  <h5>コメント一覧</h5>
   <div id="comments_area">
     <%= render 'comments/index', comments: @comments %>
   </div>
     <%= render 'comments/form', {item: @item, comment: @comment} %>
 
-  <%= render 'items/links', item: @item %>
 <% end %>

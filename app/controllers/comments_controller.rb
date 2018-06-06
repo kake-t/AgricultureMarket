@@ -3,8 +3,11 @@ class CommentsController < ApplicationController
     @item = Item.find(params[:item_id])
     @comment = @item.comments.new(comment_params)
     @comment.user_id = current_user.id
-    @comment.save
-    redirect_to @item
+    if @comment.save
+      redirect_to @item
+    else
+      render 'items/show'
+    end
   end
 
   def destroy
