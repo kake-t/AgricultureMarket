@@ -1,38 +1,38 @@
-<div class="container">
+<tr class="container">
 
   <%= form_with model: producer, local: true, url: choose_new_or_edit do |f| %>
-    <div class="">
-      <%= f.label :producer_image %>
-      <%= f.file_field :producer_image %>
-    </div>
+    <table>
+      <tr>
+        <th><%= f.label :producer_image %></th>
+        <td><%= f.file_field :producer_image %></td>
+      </tr>
 
-    <div class="">
-      <%= f.label :area %>
-      <% if producer.area.nil? %>
-        <%= f.collection_select :area, JpPrefecture::Prefecture.all, :name, :name %>
-      <% else %>
-        <%= producer.area %>
-      <% end %>
-    </div>
+      <tr>
+        <th><%= f.label :area %></th>
+        <td>
+            <%= f.collection_select :area, JpPrefecture::Prefecture.all, :name, :name %>
+        </td>
+      </tr>
 
-    <div class="">
-      <%= f.label :pesticide %>
-      <% if producer.pesticide.nil? %>
-        <label><%= f.radio_button :pesticide, false %>有り</label>
-        <label><%= f.radio_button :pesticide, true %>無し</label>
-      <% else %>
-        <%= indicate_pesticide %>
-      <% end %>
-    </div>
+      <tr>
+        <th><%= f.label :pesticide %></th>
+        <td>
+          <label><%= f.radio_button :pesticide, false %>有り</label>
+          <label><%= f.radio_button :pesticide, true %>無し</label>
+        </td>
+      </tr>
 
-    <div class="">
-      <%= f.label :content %>
-      <%= f.text_area :content %>
-    </div>
+      <tr>
+        <th><%= f.label :content %></th>
+        <td><%= f.text_area :content %></td>
+      </tr>
 
-    <div class="">
-      <%= f.submit data: {confirm: "※登録後削除できません\nまた、生産地、農薬の有無は変更できません。\n登録してよろしいですか？"}%>
-    </div>
+      <tr>
+        <td>
+          <%= f.submit data: {confirm: "※登録後削除できません\nまた、生産地、農薬の有無は変更できません。\n登録してよろしいですか？"}%>
+        </td>
+      </tr>
+    </table>
   <% end %>
 
-</div>
+</tr>
