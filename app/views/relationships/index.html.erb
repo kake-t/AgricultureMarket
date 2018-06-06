@@ -1,7 +1,11 @@
 <% if @users.empty? %>
   <div class="container">
-    <h4>フォローしているユーザーはいません</h4>
-</div>
+    <h4><%= @user.user_name %>さんがフォローしているユーザーはいません</h4>
+  </div>
+<% else %>
+  <div class="container">
+    <h4><%= @user.user_name %>さんがフォローしているユーザー</h4>
+  </div>
 <% end %>
 
   <%# フォローしているユーザーが存在すれば以下を実行 %>

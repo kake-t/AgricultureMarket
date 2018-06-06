@@ -1,6 +1,10 @@
 <% if @items.empty? %>
   <div class="container">
-    <h4>お気に入り商品を登録していません</h4>
+    <h4><%= @user.user_name %>さんはお気に入り商品を登録していません</h4>
+  </div>
+<% else %>
+  <div class="container">
+    <h4><%= @user.user_name %>さんのお気に入り一覧</h4>
   </div>
 <% end %>
 
