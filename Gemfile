@@ -19,6 +19,7 @@ gem 'devise'
 gem 'dotenv-rails'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'jp_prefecture'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -28,7 +29,6 @@ group :development, :test do
   gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'jp_prefecture'
 end
 
 group :development do
