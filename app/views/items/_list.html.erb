@@ -36,7 +36,13 @@
                 <%= item.price %>円
               </div>
 
-              <%# render 'favorites/switch', item: item %>
+              <div class="">
+                出品時間<%= item.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+              </div>
+
+              <% favorite = current_user.favorites.find_by(item_id: item.id) %>
+              <%= render 'favorites/switch', {item: item, favorite: favorite} %>
+
               <%= render 'items/links', item: item %>
             </div>
           </div>

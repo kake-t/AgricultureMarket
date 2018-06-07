@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all.order('created_at desc')
-    #@favorite = current_user.favorites.find_by(user_id: current_user.id)
+    #@favorite = current_user.favorites.find_by(item_id: @item.id)
   end
 
   def new

@@ -3,10 +3,10 @@
   <%= render 'items/params', item: @item %>
 
 <%# お気に入りボタン %>
-  <%= render 'favorites/switch', item: @item %>
+  <%= render 'favorites/switch', {item: @item, favorite: @favorite} if user_signed_in? %>
 
 <%# 購入申請ボタン %>
-  <%= render 'items/buy_request' %>
+  <%= render 'items/buy_request' if user_signed_in? %>
 
 <%# コメント機能 %>
   <%= render 'comments/comment_area' %>
