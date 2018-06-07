@@ -8,35 +8,38 @@
     </div>
   <% end %>
 
-<%#入力フォーム %>
+<%# 入力フォーム %>
   <%= form_with model: item, local: true, url: choose_url_new_or_edit, method: choose_method_new_or_edit do |f| %>
-    <div class="">
-      <%= image_tag item.item_image %>
-    </div>
 
-    <div class="">
-      <%= f.label :item_name %>
-      <%= f.text_field :item_name %>
-    </div>
+    <table>
+      <tr>
+        <td><%= image_tag item.item_image if item.item_image.present? %></td>
+      </tr>
 
-    <div class="">
-      <%= f.label :item_image %>
-      <%= f.file_field :item_image %>
-      <%= f.hidden_field :item_image_cache %>
-    </div>
+      <tr>
+        <th><%= f.label :item_name %></th>
+        <td><%= f.text_field :item_name %></td>
+      </tr>
 
-    <div class="">
-      <%= f.label :price %>
-      <%= f.text_field :price %>
-    </div>
+      <tr>
+        <th><%= f.label :item_image %></th>
+        <td><%= f.file_field :item_image %></td>
+        <%= f.hidden_field :item_image_cache %>
+      </tr>
 
-    <div class="">
-      <%= f.label :item_content %>
-      <%= f.text_area :item_content %>
-    </div>
+      <tr>
+        <th><%= f.label :price %></th>
+        <td><%= f.text_field :price %></td>
+      </tr>
 
-    <div class="">
-      <%= f.submit %>
-    </div>
+      <tr>
+        <th><%= f.label :item_content %></th>
+        <td><%= f.text_area :item_content %></td>
+      </tr>
+
+      <tr>
+        <td><%= f.submit %></td>
+      </tr>
+    </table>
   <% end %>
 </div>
