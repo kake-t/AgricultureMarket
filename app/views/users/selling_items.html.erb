@@ -1,7 +1,11 @@
 <% if @user.selling_items.empty? %>
   <div class="container">
     <h4>出品中の商品はありません</h4>
-</div>
+  </div>
+<% else %>
+  <div class="container">
+    <h4>出品中一覧</h4>
+  </div>
 <% end %>
 
 <%= render 'items/list', items: @user.selling_items %>

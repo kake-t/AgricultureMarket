@@ -1,44 +1,47 @@
 <div class="container">
   <%= form_with model: @item, local: true, url: choose_create_or_update, method: choose_post_or_pacth do |f| %>
-    <div class="">
-      <%= image_tag @item.item_image.url %>
-    </div>
+    <table>
+      <tr>
+        <td><%= image_tag @item.item_image.url %></td>
+      </tr>
 
-    <div class="">
-      <%= f.label :item_name %>
-      <%= f.hidden_field :item_name %>
-      <%= @item.item_name %>
-    </div>
+      <tr>
+        <th><%= f.label :item_name %></th>
+        <%= f.hidden_field :item_name %>
+        <td><%= @item.item_name %></td>
+      </tr>
 
-    <div class="">
-      <%= hidden_field_tag :"cache[item_image]", @item.item_image.cache_name %>
-    </div>
+      <div class="">
+        <%= hidden_field_tag :"cache[item_image]", @item.item_image.cache_name %>
+      </div>
 
-    <div class="">
-      <%= f.label :price %>
-      <%= f.hidden_field :price %>
-      <%= @item.price %>
-    </div>
+      <tr>
+        <th><%= f.label :price %></th>
+        <%= f.hidden_field :price %>
+        <th><%= @item.price %>円</th>
+      </tr>
 
-    <div class="">
-      <%= f.label :item_content %>
-      <%= f.hidden_field :item_content %>
-      <%= @item.item_content %>
-    </div>
+      <tr>
+        <th><%= f.label :item_content %></th>
+        <%= f.hidden_field :item_content %>
+        <td><%= @item.item_content %></td>
+      </tr>
 
-    <div class="">
-      <%= f.submit 'はい' %>
-    </div>
+      <tr>
+        <td><%= f.submit 'はい' %></td>
+      </tr>
   <% end %>
 
-<%#戻るボタン %>
-  <div class="">
-    <%= form_with model: @item, local: true, url: back_new_or_edit, method: :get do |f| %>
-      <%= f.hidden_field :item_name %>
-      <%= f.hidden_field :price %>
-      <%= f.hidden_field :item_content %>
-      <%= hidden_field_tag :"cache[item_image]", @item.item_image.cache_name %>
-      <%= f.submit 'いいえ', name: :back %>
-    <% end %>
-  </div>
+  <%#戻るボタン %>
+      <tr>
+        <%= form_with model: @item, local: true, url: back_new_or_edit, method: :get do |f| %>
+          <%= f.hidden_field :item_name %>
+          <%= f.hidden_field :price %>
+          <%= f.hidden_field :item_content %>
+          <%= hidden_field_tag :"cache[item_image]", @item.item_image.cache_name %>
+          <td><%= f.submit 'いいえ', name: :back %></td>
+        <% end %>
+      </tr>
+
+    </table>
 </div>

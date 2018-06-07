@@ -2,6 +2,10 @@
   <div class="container">
     <h4>売却済の商品はありません</h4>
   </div>
+<% else %>
+  <div class="container">
+    <h4>出品中一覧</h4>
+  </div>
 <% end %>
 
 <%= render 'items/list', items: @user.sold_items %>

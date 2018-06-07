@@ -17,7 +17,7 @@
 
   <div class="">
     生産者
-    <%= link_to '生産者情報', user_path(item.seller) %>
+    <%= link_to "#{item.seller.user_name}", user_path(item.seller) %>
   </div>
 
   <div class="">
@@ -25,6 +25,6 @@
   </div>
 
   <div class="">
-    <p>コメント</p>
+    <p>詳細</p>
     <%= simple_format item.item_content %>
   </div>
