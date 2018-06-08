@@ -1,5 +1,11 @@
 <%= render 'items/params', item: @item %>
 
+<% if @transaction.errors.any? %>
+  <% @transaction.errors.full_messages.each do |m| %>
+    <p><%= m %></p>
+  <% end %>
+<% end %>
+
 <h4>この商品を購入しますか？</h4>
 <div class="">
   <%= form_with model: @trensaction, local:true do |f| %>
@@ -8,5 +14,5 @@
   <% end %>
 </div>
 <div class="">
-  いいえ
+  <%= link_to submit_tag("いいえ"), item_path(params[:id]) %>
 </div>

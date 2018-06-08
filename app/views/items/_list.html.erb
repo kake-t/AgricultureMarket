@@ -8,7 +8,7 @@
           <% next if item.buyer_id.present? unless skip_actions %>
 
           <div class="">
-            <%= link_to image_tag(item.item_image_url), user_path(item.seller.id), class: "card-img-top" %>
+            <%= link_to image_tag(item.item_image_url), item, class: "card-img-top" %>
           </div>
 
           <div class="card-body">
@@ -40,7 +40,7 @@
                 出品時間<%= item.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
               </div>
 
-              <% favorite = current_user.favorites.find_by(item_id: item.id) %>
+              <% favorite = current_user.favorites.find_by(item_id: item.id) if user_signed_in? %>
               <%= render 'favorites/switch', {item: item, favorite: favorite} %>
 
               <%= render 'items/links', item: item %>

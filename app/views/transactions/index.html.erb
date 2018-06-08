@@ -1,8 +1,41 @@
 <div class="container">
   <% unless @transactions.empty? %>
+    <h4>取引中一覧</h4>
 
     <% @transactions.each do |transaction| %>
-      <p><%= link_to "#{transaction.item.item_name}", transaction %></p>
+      <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+
+            <div class="card-img-top">
+              <%= link_to image_tag(transaction.item.item_image), transaction %>
+            </div>
+
+            <div class="card-body">
+              <div>
+                <%= link_to "#{transaction.item.item_name}", transaction %>
+              </div>
+
+              <div>
+                生産者:<%= link_to "#{transaction.item.seller.user_name}", user_path(transaction.item.seller) %>
+              </div>
+
+              <div class="">
+                生産地：
+                <%= transaction.item.seller.producer.area %>
+              </div>
+
+              <div class="">
+                <%= transaction.item.price %>円
+              </div>
+
+              <div class="">
+                出品時間<%= transaction.item.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
 
   <% else %>
