@@ -1,5 +1,4 @@
 <div class="">
-
   <% if @item.seller_id != current_user.id %>
     <div class="">
       <%=
@@ -11,11 +10,11 @@
 
   <% if @item.buyer_id == current_user.id %>
     <div class="">
-      <h4>この商品は購入済です</h4>
+      <h4 class="alert alert-danger">この商品は購入済です</h4>
     </div>
   <% elsif @item.buyer_id.present? && @item.buyer_id != current_user.id %>
     <div class="">
-      <h4>この商品は出品終了です</h4>
+      <h4 class="alert alert-danger">この商品は出品終了です</h4>
     </div>
   <% end %>
 

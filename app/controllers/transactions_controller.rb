@@ -9,7 +9,7 @@ class TransactionsController < ApplicationController
       TransactionMailer.seller_mail(@transaction.item.seller, @transaction.user).deliver
       redirect_to @transaction
     else
-      render 'items/buy_confirm'
+      redirect_to @transaction.item, notice: 'すでに購入申請しています'
     end
   end
 

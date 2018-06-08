@@ -8,7 +8,6 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all.order('created_at desc')
-    #@favorite = current_user.favorites.find_by(item_id: @item.id)
   end
 
   def new
@@ -75,7 +74,6 @@ class ItemsController < ApplicationController
     @item.state = true
     if @item.save
       @transaction = Transaction.find_by(item_id: params[:id]).destroy
-      @item.favorites.find_by(item_id: @item.id).destroy
       redirect_to items_path, notice: '受取完了しました'
     else
       render 'transactions/new'
