@@ -73,6 +73,7 @@ class ItemsController < ApplicationController
     @item.buyer_id = current_user.id
     @item.state = true
     if @item.save
+      TransactionMailer.complete_mail(@item.seller, @item.buyer).deliver
       @transaction = Transaction.find_by(item_id: params[:id]).destroy
       redirect_to items_path, notice: '受取完了しました'
     else

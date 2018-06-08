@@ -1,13 +1,8 @@
 Rails.application.routes.draw do
-  # devise_for :users
   devise_for :users, controllers: {
         registrations: 'users/registrations'
       }
 
-  #ログイン、ユーザー情報更新後、ユーザー情報編集画面に飛ぶ
-  # as :user do
-  #   get 'users/edit', to: 'devise/registrations#edit', as: :user_root
-  # end
   resources :users, only: [:show] do
     resources :producers, except: %i[index destory]
     resources :relationships, only: %i[create destroy index]
@@ -33,6 +28,7 @@ Rails.application.routes.draw do
 
   resources :transactions, only: %i[create show index destroy]
 
-  root to: 'items#index'
+  root to: 'items#top'
+
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 end
