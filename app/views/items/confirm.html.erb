@@ -3,7 +3,7 @@
   <%= form_with model: @item, local: true, url: choose_create_or_update, method: choose_post_or_pacth do |f| %>
     <table>
       <tr>
-        <td><%= image_tag @item.item_image.url %></td>
+        <td><%= image_tag @item.item_image if @item.item_image.present? %></td>
       </tr>
 
       <tr>
