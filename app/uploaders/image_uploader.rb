@@ -27,10 +27,14 @@ class ImageUploader < CarrierWave::Uploader::Base
   # def scale(width, height)
   #   # do something
   # end
-  process resize_to_limit: [200, 200]
+  process resize_to_fit: [300, 300]
 
-  version :thumb do
-    process resize_to_fit: [100, 100]
+  version :item_thumb do
+    process resize_to_fit: [208, 200]
+  end
+
+  version :user_thumb do
+    process resize_to_fit: [90, 90]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

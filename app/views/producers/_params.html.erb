@@ -5,25 +5,28 @@
   url: user_producers_path(producer.user_id) do |f|
 %>
 
-  <div class="">
-    <%= f.label :producer_image %>
-    <%= image_tag producer.producer_image %>
-  </div>
+<table>
+  <tr>
+    <th><%= f.label :producer_image %></th>
+    <td><%= image_tag producer.producer_image %></td>
+  </tr>
 
-  <div class="">
-    <%= f.label :area %>
-    <%= producer.area %>
-  </div>
+  <tr>
+    <th><%= f.label :area %></th>
+    <td><%= producer.area %></td>
+  </tr>
 
-  <div class="">
-    <%= f.label :pesticide %>
-    <%= indicate_pesticide %>
-  </div>
+  <tr>
+    <th><%= f.label :pesticide %></th>
+    <td><%= indicate_pesticide %></td>
+  </tr>
 
-  <div class="">
-    <%= f.label :content %>
-    <%= simple_format producer.content %>
-  </div>
+  <tr>
+    <th><%= f.label :content %></th>
+    <td><%= simple_format producer.content %></td>
+  </tr>
+</table>
+
 <% end %>
 
 </div>
