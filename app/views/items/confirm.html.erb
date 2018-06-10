@@ -4,6 +4,8 @@
     <table>
       <tr>
         <td><%= image_tag @item.item_image if @item.item_image.present? %></td>
+        <%= hidden_field_tag :"cache[item_image]", @item.item_image.cache_name %>
+
       </tr>
 
       <tr>
@@ -11,10 +13,6 @@
         <%= f.hidden_field :item_name %>
         <td><%= @item.item_name %></td>
       </tr>
-
-      <div class="">
-        <%= hidden_field_tag :"cache[item_image]", @item.item_image.cache_name %>
-      </div>
 
       <tr>
         <th><%= f.label :price %></th>
