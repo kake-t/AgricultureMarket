@@ -1,6 +1,13 @@
 <tr class="container">
+  <% if producer.errors.any? %>
+    <div class="">
+      <% producer.errors.full_messages.each do |m| %>
+        <p><%= m %></p>
+      <% end %>
+    </div>
+  <% end %>
 
-  <%= form_with model: producer, local: true, url: choose_new_or_edit do |f| %>
+  <%= form_with model: [user, producer], local: true do |f| %>
     <table>
       <tr>
         <th><%= f.label :producer_image %></th>

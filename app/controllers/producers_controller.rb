@@ -4,11 +4,13 @@ class ProducersController < ApplicationController
   def new
     @producer = Producer.new
     @producer.user_id = current_user.id
+    @user = current_user
   end
 
   def create
     @producer = Producer.new(producer_params)
     @producer.user_id = current_user.id
+    @user = current_user
     if @producer.save
       redirect_to user_path(current_user)
     else
@@ -21,6 +23,7 @@ class ProducersController < ApplicationController
   def edit; end
 
   def update
+    # @user = current_user
     if @producer.update(producer_params)
       redirect_to user_path(current_user)
     else
