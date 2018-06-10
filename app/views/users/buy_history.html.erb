@@ -1,6 +1,10 @@
 <% if @user.buyed_items.empty? %>
   <div class="container">
     <h4>購入した商品がありません</h4>
+  </div>
+<% else %>
+<div class="container">
+  <h4>購入履歴</h4>
 </div>
 <% end %>
 <%= render 'items/list', items: @user.buyed_items %>

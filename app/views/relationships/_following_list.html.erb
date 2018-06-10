@@ -1,14 +1,16 @@
-<div class="row">
-  <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
-    <% users.each do |user| %>
-      <div class="card h-100">
-        <div class="card-img-top">
-          <%= link_to image_tag(user.user_icon.url), user %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+      <% users.each do |user| %>
+        <div class="card h-100">
+          <div class="card-img-top">
+            <%= link_to image_tag(user.user_icon.url), user %>
+          </div>
+          <div>
+            名前:<%= link_to user.user_name, user %>
+          </div>
         </div>
-        <div>
-          名前:<%= link_to user.user_name, user %>
-        </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

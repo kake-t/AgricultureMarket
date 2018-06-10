@@ -1,14 +1,18 @@
-<%= render 'items/params', item: @item %>
+<div class="container">
+
+  <%= render 'items/params', item: @item %>
 
 
 
-<h4>この商品を購入しますか？</h4>
-<div class="">
-  <%= form_with model: @trensaction, local:true do |f| %>
-    <%= hidden_field_tag 'transaction[item_id]', @item.id %>
-    <%= f.submit 'はい' %>
-  <% end %>
-</div>
-<div class="">
-  <%= link_to submit_tag("いいえ"), item_path(params[:id]) %>
+  <h4>この商品を購入しますか？</h4>
+  <div class="">
+    <%= form_with model: @trensaction, local:true do |f| %>
+      <%= hidden_field_tag 'transaction[item_id]', @item.id %>
+      <%= f.submit 'はい' %>
+    <% end %>
+  </div>
+  <div class="">
+    <%= link_to submit_tag("いいえ"), item_path(params[:id]) %>
+  </div>
+
 </div>
