@@ -1,11 +1,8 @@
 <div class="container">
 <div class="row">
 <% items.each do |item| %>
-
       <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
-
         <div class="card h-100">
-
           <div class="">
             <%= link_to image_tag(item.item_image.item_thumb), item, class: "card-img-top" %>
           </div>
@@ -39,8 +36,12 @@
                 出品時間<%= item.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
               </div>
 
+
               <% favorite = current_user.favorites.find_by(item_id: item.id) if user_signed_in? %>
-              <%= render 'favorites/switch', {item: item, favorite: favorite} %>
+
+              <div id="favorite_switch_<%= item.id %>">
+                <%= render 'favorites/switch', {item: item, favorite: favorite} %>
+              </div>
 
               <%= render 'items/links', item: item %>
             </div>

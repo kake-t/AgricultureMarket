@@ -1,14 +1,14 @@
-<div class="">
+<div id="">
   <% if item.buyer_id.nil? && current_user != item.seller %>
     <% if favorite.nil? %>
       <%=
         link_to 'お気に入り', item_favorites_path(item.id),
-        method: :post, class: 'btn btn-primary'
+        method: :post, class: 'btn btn-primary', remote: true
       %>
     <% else %>
       <%=
         link_to 'お気に入り解除', item_favorite_path(item.id, favorite.id),
-        method: :delete, class: 'btn btn-danger'
+        method: :delete, class: 'btn btn-danger', remote: true
       %>
     <% end %>
   <% end %>

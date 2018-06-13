@@ -7,12 +7,26 @@ class FavoritesController < ApplicationController
   end
 
   def create
+    @item = Item.find(params[:item_id])
     favorite = current_user.favorites.create(item_id: params[:item_id])
-    redirect_to item_path(params[:item_id]), notice: "#{favorite.item.item_name}をお気に入りに登録しました"
+    respond_to do |format|
+      format.html { redirect_to item_path(params[:item_id]), notice: "#{favorite.item.item_name}をお気に入りに登録しました" }
+      format.js {
+        @item = Item.find(params[:item_id])
+        @favorite = current_user.favorites.find_by(item_id: @item.id)
+      }
+    end
   end
 
   def destroy
+    @item = Item.find(params[:item_id])
     favorite = current_user.favorites.find_by(item_id: params[:item_id]).destroy
-    redirect_to item_path(params[:item_id]), notice: "#{favorite.item.item_name}をお気に入り解除しました"
+    respond_to do |format|
+      format.html { redirect_to item_path(params[:item_id]), notice: "#{favorite.item.item_name}をお気に入り解除しました" }
+      format.js {
+        @item = Item.find(params[:item_id])
+        @favorite = current_user.favorites.find_by(item_id: @item.id)
+      }
+    end
   end
 end
