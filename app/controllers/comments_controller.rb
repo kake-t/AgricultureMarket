@@ -3,16 +3,22 @@ class CommentsController < ApplicationController
     @item = Item.find(params[:item_id])
     @comment = @item.comments.new(comment_params)
     @comment.user_id = current_user.id
-    if @comment.save
-      redirect_to @item
-    else
-      render 'items/show'
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to @item }
+        format.js { render 'comments/index' }
+      else
+        format.html { render 'items/show' }
+      end
     end
   end
 
   def destroy
     @comment = Comment.find(params[:id]).destroy
-    redirect_to item_path(params[:item_id])
+    respond_to do |format|
+      format.html { redirect_to item_path(params[:item_id]) }
+      format.js { render 'comments/index' }
+    end
   end
 
   private

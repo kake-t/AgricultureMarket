@@ -1,4 +1,6 @@
 <div class="container">
+
+  <%= form_with model: [item, comment] do |f| %>
   <% if comment.errors.any? %>
   <ul>
     <% comment.errors.full_messages.each do |message| %>
@@ -7,13 +9,12 @@
   </ul>
   <% end %>
 
-  <%= form_with model: [item, comment] do |f| %>
 
-    <div class="">
+    <div class="field">
       <%= f.text_area :content %>
     </div>
 
-    <div class="">
+    <div class="actions">
       <%= f.submit %>
     </div>
 
