@@ -6,8 +6,14 @@
           <div class="card-img-top">
             <%= link_to image_tag(user.user_icon.url), user if user.user_icon.present? %>
           </div>
+
           <div>
             名前:<%= link_to user.user_name, user %>
+          </div>
+
+          <%# フォローボタン %>
+          <div id="relationship_switch_<%= user.id %>">
+            <%= render 'relationships/switch', user: user %>
           </div>
         </div>
       <% end %>
