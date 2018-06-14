@@ -1,10 +1,14 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
-      <% users.each do |user| %>
+    <% users.each do |user| %>
+      <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
         <div class="card h-100">
           <div class="card-img-top">
-            <%= link_to image_tag(user.user_icon.url), user if user.user_icon.present? %>
+            <% if user.user_icon.present? %>
+              <%= link_to image_tag(user.user_icon.user_thumb), user %>
+            <% else %>
+              <%= link_to image_tag(asset_path("usericon.jpg")), user %>
+            <% end %>
           </div>
 
           <div>
@@ -16,7 +20,7 @@
             <%= render 'relationships/switch', user: user %>
           </div>
         </div>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 </div>

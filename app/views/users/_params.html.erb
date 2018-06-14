@@ -1,5 +1,9 @@
 <div class="">
-  <%= image_tag user.user_icon.user_thumb %>
+  <% if user.user_icon.present? %>
+    <%= image_tag user.user_icon.user_thumb %>
+  <% else %>
+    <%= image_tag asset_path("usericon.jpg") %>
+  <% end %>
 </div>
 <div class="">
   名前<br>
