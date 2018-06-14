@@ -1,8 +1,7 @@
 # users
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[buy_history selling_items sold_items]
+  before_action :set_user, only: %i[show buy_history selling_items sold_items]
   def show
-    @user = User.find(params[:id])
     @producer = @user.producer
   end
 

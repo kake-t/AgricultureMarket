@@ -8,5 +8,7 @@
 
 <div class="">
   <%# フォローボタン %>
-  <%= render 'relationships/switch', user: @user %>
+  <div id="relationship_switch_<%= user.id %>">
+    <%= render 'relationships/switch', user: @user %>
+  </div>
 </div>
