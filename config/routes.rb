@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root to: 'items#top'
+
   devise_for :users, controllers: {
         registrations: 'users/registrations'
       }
@@ -27,8 +29,6 @@ Rails.application.routes.draw do
   end
 
   resources :transactions, only: %i[create show index destroy]
-
-  root to: 'items#top'
 
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 end
