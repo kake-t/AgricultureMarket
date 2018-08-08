@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show buy_history selling_items sold_items]
+
   def show
     @producer = @user.producer
   end
