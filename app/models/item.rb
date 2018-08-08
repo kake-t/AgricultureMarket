@@ -6,9 +6,7 @@ class Item < ApplicationRecord
 
   has_many :favorites, dependent: :destroy
   has_many :favorite_users, through: :favorites, source: :user
-
   has_many :comments, dependent: :destroy
-
   has_many :transactions, dependent: :destroy
 
   validates :item_name, presence: true, length: { maximum: 150 }
