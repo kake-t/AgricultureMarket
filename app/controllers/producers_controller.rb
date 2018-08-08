@@ -14,7 +14,7 @@ class ProducersController < ApplicationController
     if @producer.save
       redirect_to user_path(current_user)
     else
-      render 'new'
+      render :new
     end
   end
 
@@ -27,7 +27,7 @@ class ProducersController < ApplicationController
     if @producer.update(producer_params)
       redirect_to user_path(current_user)
     else
-      render 'edit'
+      render :edit
     end
   end
 
