@@ -3,7 +3,7 @@
     <% if favorite.nil? %>
       <%=
         link_to 'お気に入り', item_favorites_path(item.id),
-        method: :post, class: 'btn btn-primary', remote: true
+        method: :post, class: 'btn btn-primary', remote: signed_in_true_or_false
       %>
     <% else %>
       <%=
