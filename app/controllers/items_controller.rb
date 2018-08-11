@@ -1,5 +1,6 @@
 # items
 class ItemsController < ApplicationController
+  before_action :authenticate_user!, except: %i[top index show]
   before_action :set_item, only: %i[show update destroy buy_confirm buy_complete]
   before_action :check_current_user_producer_nil?, only: [:new]
   before_action :check_item_state, only: [:edit]
@@ -25,7 +26,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to items_path, notice: '出品しました'
     else
-      render 'new'
+      render :new
     end
   end
 
@@ -51,7 +52,7 @@ class ItemsController < ApplicationController
     if @item.update(item_params)
       redirect_to items_path, notice: '編集しました'
     else
-      render 'edit'
+      render :edit
     end
   end
 
@@ -62,7 +63,7 @@ class ItemsController < ApplicationController
 
   def confirm
     @item = current_user.selling_items.new(item_params)
-    render 'new' if @item.invalid?
+    render :new if @item.invalid?
   end
 
   def buy_confirm
