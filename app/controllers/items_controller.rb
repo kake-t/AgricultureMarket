@@ -1,5 +1,6 @@
 # items
 class ItemsController < ApplicationController
+  before_action :authenticate_user!, except: %i[top index show]
   before_action :set_item, only: %i[show update destroy buy_confirm buy_complete]
   before_action :check_current_user_producer_nil?, only: [:new]
   before_action :check_item_state, only: [:edit]
