@@ -4,6 +4,4 @@
 
 <p>発送先、支払い方法などの連絡を連絡しましょう</p>
 
-<p><%= @buyer.user_name %>のメールアドレス</p>
-
-<p><%= @buyer.email %></p>
+<%= link_to 'チャットページはこちらをクリック', transaction_messages_url(@transaction) %>
