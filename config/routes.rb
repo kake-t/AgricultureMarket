@@ -28,6 +28,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :conversations do
+    resources :messages
+  end
+
   resources :transactions, only: %i[create show index destroy]
 
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
