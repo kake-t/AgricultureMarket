@@ -1,10 +1,6 @@
 class Message < ApplicationRecord
-  belongs_to :transaction
-  belongs_to :user
+  belongs_to :nagotiation, class_name: 'Transaction', optional: true
+  belongs_to :user, optional: true
 
-  validates_persence_of :body, :transaction_id, :user_id
-
-  def message_time
-    created_at.strftime("%m/%d/%y at %l:%M %p")
-  end
+  validates_presence_of :body, :transaction_id, :user_id
 end

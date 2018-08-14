@@ -21,11 +21,11 @@ class MessagesController < ApplicationController
       end
     end
 
-    @message = Transaction.messages.new
+    @message = @transaction.messages.new
   end
 
   def create
-    @message = Transaction.messages.new(message_params)
+    @message = @transaction.messages.new(message_params)
     if @message.save
       redirect_to transaction_messages_path(@transaction)
     else
