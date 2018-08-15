@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  body: MyText
+  transaction: one
+  user: one
+  read: false
+
+two:
+  body: MyText
+  transaction: two
+  user: two
+  read: false

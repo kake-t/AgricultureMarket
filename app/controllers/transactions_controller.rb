@@ -6,8 +6,8 @@ class TransactionsController < ApplicationController
     @transaction = current_user.transactions.new(transaction_params)
     if @transaction.save
       #メール送信
-      TransactionMailer.buyer_mail(current_user).deliver
-      TransactionMailer.seller_mail(@transaction.item.seller, @transaction.user).deliver
+      TransactionMailer.buyer_mail(current_user, @transaction).deliver
+      TransactionMailer.seller_mail(@transaction.item.seller, @transaction.user, @transaction).deliver
       redirect_to @transaction
     else
       redirect_to @transaction.item, notice: 'すでに購入申請しています'
