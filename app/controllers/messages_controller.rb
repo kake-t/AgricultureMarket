@@ -18,6 +18,7 @@ class MessagesController < ApplicationController
     if @messages.last
       if @messages.last.user_id != current_user.id
         @messages.last.read = true
+        @messages.last.save
       end
     end
 

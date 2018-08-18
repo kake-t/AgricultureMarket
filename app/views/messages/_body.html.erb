@@ -6,19 +6,23 @@
       <% if message.user_id == current_user.id %>
         <div class="speech-bubble">
           <div class="sb-bubble sb-line2 sb-right">
-            <div class="popover-title"><strong><%= message.user.user_name %></strong> <%= simple_time_helper(message.created_at) %></div>
-              <div class="popover-content">
-                <%= simple_format message.body %>
-              </div>
+            <div class="popover-title"><%= simple_time_helper(message.created_at) %></div>
+            <div class="popover-content">
+              <%= simple_format message.body %>
+            </div>
           </div>
+          <% if message.read == true %>
+            <span class="sb-right">既読</span>
+          <% end %>
         </div>
       <% else %>
         <div class="speech-bubble">
+          <strong class="sb-left"><%= message.user.user_name %></strong>
           <div class="sb-bubble sb-line2 sb-left">
-            <div class="popover-title"><strong><%= message.user.user_name %></strong> <%= simple_time_helper(message.created_at) %></div>
-              <div class="popover-content">
-                <%= simple_format message.body %>
-              </div>
+            <div class="popover-title"><%= simple_time_helper(message.created_at) %></div>
+            <div class="popover-content">
+              <%= simple_format message.body %>
+            </div>
           </div>
         </div>
       <% end %>
