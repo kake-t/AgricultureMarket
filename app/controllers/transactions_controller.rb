@@ -6,8 +6,8 @@ class TransactionsController < ApplicationController
     @transaction = current_user.transactions.new(transaction_params)
     if @transaction.save
       #メール送信
-      TransactionMailer.buyer_mail(current_user, @transaction).deliver
-      TransactionMailer.seller_mail(@transaction.item.seller, @transaction.user, @transaction).deliver
+      TransactionMailer.buyer_mail(current_user, @transaction).deliver_now
+      TransactionMailer.seller_mail(@transaction.item.seller, @transaction.user, @transaction).deliver_now
       redirect_to @transaction
     else
       redirect_to @transaction.item, notice: 'すでに購入申請しています'
@@ -23,8 +23,8 @@ class TransactionsController < ApplicationController
   def destroy
     @transaction.destroy
     #メール送信
-    TransactionMailer.cancel_mail(current_user, current_user).deliver
-    TransactionMailer.cancel_mail(@transaction.item.seller, @transaction.user).deliver
+    TransactionMailer.cancel_mail(current_user, current_user).deliver_now
+    TransactionMailer.cancel_mail(@transaction.item.seller, @transaction.user).deliver_now
     redirect_to user_path(current_user.id), notice: '購入キャンセルしました'
   end
 

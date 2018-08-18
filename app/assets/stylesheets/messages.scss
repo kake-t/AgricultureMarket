@@ -1,3 +1,105 @@
-// Place all the styles related to the Messages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.speech-bubble {
+  overflow: hidden;
+  padding-bottom: 10px;
+}
+
+.speech-bubble p {
+  margin: 0;
+}
+
+.speech-bubble {
+  background: #ffffff;
+}
+
+.speech-bubble:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.speech-bubble:before {
+  content: "";
+  display: table;
+}
+
+.sb-bubble:after,
+.sb-bubble:before {
+  content: " ";
+  height: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 1.2em;
+  width: 0;
+}
+
+.sb-left {
+  float: left;
+  margin-left: 20px;
+}
+
+.sb-right {
+  float: right;
+  margin-right: 20px;
+}
+
+/*** 現ライン風（フラット１） ***/
+
+.sb-line2 {
+  border: solid 1px #c5d0e4;
+  border-radius: 1em;
+  max-width: 70%;
+  padding: .2em 1em;
+  position: relative;
+}
+
+.sb-line2.sb-left {
+  background: #f9f9f9;
+}
+
+.sb-line2.sb-left:after {
+  background: #ffffff;
+  border: solid #c5d0e4;
+  border-radius: 1.6em 0 0 1.6em;
+  border-width: 0 0 1px 1px;
+  height: 1.6em;
+  margin: -2.3em -1px 0 0;
+  right: 100%;
+  width: .8em;
+}
+
+.sb-line2.sb-left:before {
+  background: #f9f9f9;
+  border: solid #c5d0e4;
+  border-radius: 1.6em 0 0 1.6em;
+  border-width: 0 0 1px 1px;
+  height: 1.6em;
+  margin: -1.8em -1px 0 0;
+  right: 100%;
+  width: .8em;
+}
+
+.sb-line2.sb-right {
+  background: #84e248;
+}
+
+.sb-line2.sb-right:after {
+  background: #ffffff;
+  border: solid #c5d0e4;
+  border-radius: 0 1.6em 1.6em 0;
+  border-width: 0 1px 1px 0;
+  height: 1.6em;
+  left: 100%;
+  margin: -2.3em 0 0 -1px;
+  width: .8em;
+}
+
+.sb-line2.sb-right:before {
+  background: #84e248;
+  border: solid #c5d0e4;
+  border-radius: 0 1.6em 1.6em 0;
+  border-width: 0 1px 1px 0;
+  height: 1.6em;
+  left: 100%;
+  margin: -1.8em 0 0 -1px;
+  width: .8em;
+}
