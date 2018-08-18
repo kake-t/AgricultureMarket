@@ -17,7 +17,7 @@
         </div>
       <% else %>
         <div class="speech-bubble">
-          <strong class="sb-left"><%= message.user.user_name %></strong>
+          <strong class="sb-left"><%= message.user.user_name %>さん</strong>
           <div class="sb-bubble sb-line2 sb-left">
             <div class="popover-title"><%= simple_time_helper(message.created_at) %></div>
             <div class="popover-content">
