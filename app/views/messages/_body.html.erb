@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-12">
+    <% messages.each do |message| %>
+      <% if message.body %>
+
+      <% if message.user_id == current_user.id %>
+        <div class="speech-bubble">
+          <div class="sb-bubble sb-line2 sb-right">
+            <div class="popover-title"><strong><%= message.user.user_name %></strong> <%= simple_time_helper(message.created_at) %></div>
+              <div class="popover-content">
+                <%= simple_format message.body %>
+              </div>
+          </div>
+        </div>
+      <% else %>
+        <div class="speech-bubble">
+          <div class="sb-bubble sb-line2 sb-left">
+            <div class="popover-title"><strong><%= message.user.user_name %></strong> <%= simple_time_helper(message.created_at) %></div>
+              <div class="popover-content">
+                <%= simple_format message.body %>
+              </div>
+          </div>
+        </div>
+      <% end %>
+
+      <% end %>
+    <% end %>
+  </div>
+</div>

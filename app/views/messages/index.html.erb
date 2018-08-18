@@ -1,35 +1,19 @@
-<h1>出品者と購入者のメッセージ</h1>
+<h1 class="text-center"><%=@transaction.item.seller.user_name%>さんと<%=@transaction.user.user_name%>さんの<br>メッセージ</h1>
+<div class="container">
+  <% if @over_ten %>
+    <%= link_to '以前のメッセージ', '?m=all' %>
+  <% end %>
 
-<% if @over_ten %>
-  <%= link_to '以前のメッセージ', '?m=all' %>
-<% end %>
+  <%= render 'messages/body', messages: @messages %>
 
-<div class="ui segment">
-  <% @messages.each do |message| %>
-    <% if message.body %>
-      <% user = User.find(message.user_id) %>
-      <div class="item">
-        <div class="content">
-          <div class="header"><strong><%= user.user_name %></strong> <%= simple_time_helper(message.created_at) %></div>
-          <div class="list">
-            <div class="item">
-              <i class="right triangle icon"></i>
-              <%= message.body %>
-            </div>
-          </div>
-        </div>
-      </div>
-    <% end %>
+  <%= form_with(model: [@transaction, @message]) do |f| %>
+    <div class="field">
+      <%= f.text_area :body, class: "form-control" %>
+    </div>
+      <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
+    <div>
+      <%= f.submit "メッセージを送る" %>
+    </div>
+
   <% end %>
 </div>
-
-<%= form_with(model: [@transaction, @message]) do |f| %>
-  <div class="field">
-    <%= f.text_area :body, class: "form-control" %>
-  </div>
-    <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
-  <div>
-    <%= f.submit "メッセージを送る" %>
-  </div>
-
-<% end %>
