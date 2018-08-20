@@ -24,7 +24,6 @@ class ProducersController < ApplicationController
   def edit; end
 
   def update
-    # @user = current_user
     if @producer.update(producer_params)
       redirect_to user_path(current_user)
     else
