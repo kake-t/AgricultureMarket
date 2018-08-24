@@ -21,7 +21,9 @@ class ProducersController < ApplicationController
 
   def show; end
 
-  def edit; end
+  def edit
+    @user = current_user
+  end
 
   def update
     if @producer.update(producer_params)
