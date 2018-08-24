@@ -7,7 +7,6 @@ class User < ApplicationRecord
 
   mount_uploader :user_icon, ImageUploader
 
-  # association
   has_one :producer, dependent: :destroy
   # userが「買った」商品
   has_many :buyed_items, foreign_key: 'buyer_id',

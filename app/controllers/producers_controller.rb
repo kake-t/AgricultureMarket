@@ -21,10 +21,11 @@ class ProducersController < ApplicationController
 
   def show; end
 
-  def edit; end
+  def edit
+    @user = current_user
+  end
 
   def update
-    # @user = current_user
     if @producer.update(producer_params)
       redirect_to user_path(current_user)
     else
