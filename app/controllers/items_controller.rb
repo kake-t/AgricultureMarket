@@ -39,6 +39,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @patch = :p
     if @item.seller_id == current_user.id
       if params[:back]
         @item_image = Item.find(params[:id])
@@ -75,7 +76,14 @@ class ItemsController < ApplicationController
 
   def confirm
     @item = current_user.selling_items.new(item_params)
-    render :new if @item.invalid?
+    if @item.invalid?
+      if params[:p] == 'p'
+        @patch = :p
+        render :edit
+      else
+        render :new
+      end
+    end
   end
 
   def buy_confirm
