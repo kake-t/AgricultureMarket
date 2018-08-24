@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       }
 
   resources :users, only: [:show] do
+    resources :favorites, only: [:index]
     resources :producers, except: %i[index destory]
     resources :relationships, only: %i[create destroy index]
     member do
@@ -16,7 +17,7 @@ Rails.application.routes.draw do
   end
 
   resources :items do
-    resources :favorites, only: %i[create destroy index]
+    resources :favorites, only: %i[create destroy]
     resources :comments
     collection do
       post :confirm
