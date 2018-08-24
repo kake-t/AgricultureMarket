@@ -39,20 +39,28 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    if params[:back]
-      @item_image = Item.find(params[:id])
-      @item = Item.new(item_params)
+    if @item.seller_id == current_user.id
+      if params[:back]
+        @item_image = Item.find(params[:id])
+        @item = Item.new(item_params)
+      else
+        set_item
+      end
     else
-      set_item
+      redirect_to @item, notice: '権限がありません'
     end
   end
 
   def update
     @item.item_image.retrieve_from_cache!(params[:cache][:item_image])
-    if @item.update(item_params)
-      redirect_to items_path, notice: '編集しました'
+    if @item.seller_id == current_user.id
+      if @item.update(item_params)
+        redirect_to items_path, notice: '編集しました'
+      else
+        render :edit
+      end
     else
-      render :edit
+      redirect_to @item, notice: '権限がありません'
     end
   end
 
@@ -60,6 +68,8 @@ class ItemsController < ApplicationController
     if @item.seller_id == current_user.id
       @item.destroy
       redirect_to items_path, notice: '削除しました'
+    else
+      redirect_to @item, notice: '権限がありません'
     end
   end
 
