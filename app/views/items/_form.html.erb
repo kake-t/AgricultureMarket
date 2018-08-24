@@ -41,5 +41,9 @@
         <td><%= f.submit %></td>
       </tr>
     </table>
+
+    <%# if @patch %>
+      <%= hidden_field_tag :p, @patch %>
+    <%# end %>
   <% end %>
 </div>

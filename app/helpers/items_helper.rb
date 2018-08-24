@@ -1,16 +1,16 @@
 module ItemsHelper
   def choose_url_new_or_edit
-    if action_name == 'new' || action_name == 'confirm'
+    if action_name == 'new' || (action_name == 'confirm' && params[:p] == '')
       confirm_items_path
-    elsif action_name == 'edit'
+    elsif action_name == 'edit' || params[:p] == 'p'
       confirm_item_path(params[:id])
     end
   end
 
   def choose_method_new_or_edit
-    if action_name == 'new' || action_name == 'confirm'
+    if action_name == 'new' || (action_name == 'confirm' && params[:p] == '')
       :post
-    elsif action_name == 'edit'
+    elsif action_name == 'edit' || params[:p] == 'p'
       :patch
     end
   end

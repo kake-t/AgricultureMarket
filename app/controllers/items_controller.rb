@@ -39,31 +39,51 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    if params[:back]
-      @item_image = Item.find(params[:id])
-      @item = Item.new(item_params)
+    @patch = :p
+    if @item.seller_id == current_user.id
+      if params[:back]
+        @item_image = Item.find(params[:id])
+        @item = Item.new(item_params)
+      else
+        set_item
+      end
     else
-      set_item
+      redirect_to @item, notice: '権限がありません'
     end
   end
 
   def update
     @item.item_image.retrieve_from_cache!(params[:cache][:item_image])
-    if @item.update(item_params)
-      redirect_to items_path, notice: '編集しました'
+    if @item.seller_id == current_user.id
+      if @item.update(item_params)
+        redirect_to items_path, notice: '編集しました'
+      else
+        render :edit
+      end
     else
-      render :edit
+      redirect_to @item, notice: '権限がありません'
     end
   end
 
   def destroy
-    @item.destroy
-    redirect_to items_path, notice: '削除しました'
+    if @item.seller_id == current_user.id
+      @item.destroy
+      redirect_to items_path, notice: '削除しました'
+    else
+      redirect_to @item, notice: '権限がありません'
+    end
   end
 
   def confirm
     @item = current_user.selling_items.new(item_params)
-    render :new if @item.invalid?
+    if @item.invalid?
+      if params[:p] == 'p'
+        @patch = :p
+        render :edit
+      else
+        render :new
+      end
+    end
   end
 
   def buy_confirm
