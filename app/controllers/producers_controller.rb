@@ -3,9 +3,8 @@ class ProducersController < ApplicationController
   before_action :set_producer, only: %i[show edit update destroy]
 
   def new
-    @producer = Producer.new
-    @producer.user_id = current_user.id
     @user = current_user
+    @producer = @user.build_producer
   end
 
   def create
