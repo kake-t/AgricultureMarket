@@ -57,8 +57,10 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item.destroy
-    redirect_to items_path, notice: '削除しました'
+    if @item.seller_id == current_user.id
+      @item.destroy
+      redirect_to items_path, notice: '削除しました'
+    end
   end
 
   def confirm
