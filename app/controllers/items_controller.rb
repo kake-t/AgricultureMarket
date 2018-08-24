@@ -32,6 +32,7 @@ class ItemsController < ApplicationController
 
   def show
     if user_signed_in?
+      @transaction = @item.transactions.first
       @favorite = current_user.favorites.find_by(item_id: @item.id)
       @comment = @item.comments.new
       @comments = @item.comments

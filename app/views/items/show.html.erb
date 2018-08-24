@@ -10,6 +10,8 @@
 <%# 購入申請ボタン %>
   <%= render 'items/buy_request' if user_signed_in? %>
 
+  <%= link_to 'チャット画面はこちら', transaction_messages_path(@transaction.id) if @transaction.present? && @item.seller == current_user %>
+
 <%# コメント機能 %>
   <%= render 'comments/comment_area' %>
 
