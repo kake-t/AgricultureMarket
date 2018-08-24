@@ -22,20 +22,32 @@ class ProducersController < ApplicationController
   def show; end
 
   def edit
-    @user = current_user
+    if @producer.user_id == current_user.id
+      @user = current_user
+    else
+      redirect_to current_user, notice: '権限がありません'
+    end
   end
 
   def update
-    if @producer.update(producer_params)
-      redirect_to user_path(current_user)
+    if @producer.user_id == current_user.id
+      if @producer.update(producer_params)
+        redirect_to user_path(current_user)
+      else
+        render :edit
+      end
     else
-      render :edit
+      redirect_to current_user, notice: '権限がありません'
     end
   end
 
   def destroy
-    @producer.destroy
-    redirect_to user_path(current_user), notice: '生産者情報を削除しました'
+    if @producer.user_id == current_user.id
+      @producer.destroy
+      redirect_to user_path(current_user), notice: '生産者情報を削除しました'
+    else
+      redirect_to current_user, notice: '権限がありません'
+    end
   end
 
   private
