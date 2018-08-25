@@ -5,8 +5,6 @@ class ItemsController < ApplicationController
   before_action :check_current_user_producer_nil?, only: [:new]
   before_action :check_item_state, only: [:edit]
 
-  def top; end
-
   def index
     @items = Item.all.order('created_at desc')
   end
@@ -32,7 +30,7 @@ class ItemsController < ApplicationController
 
   def show
     if user_signed_in?
-      @transaction = @item.transactions.first
+      @transactions = @item.transactions
       @favorite = current_user.favorites.find_by(item_id: @item.id)
       @comment = @item.comments.new
       @comments = @item.comments
