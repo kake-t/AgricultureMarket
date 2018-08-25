@@ -5,8 +5,6 @@ class ItemsController < ApplicationController
   before_action :check_current_user_producer_nil?, only: [:new]
   before_action :check_item_state, only: [:edit]
 
-  def top; end
-
   def index
     @items = Item.all.order('created_at desc')
   end
