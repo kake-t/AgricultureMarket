@@ -12,7 +12,7 @@
 
   <div class="margin-top-20">
     <%# 生産者情報を持っている時、生産者情報を表示する %>
-    <% unless @user.producer.nil? %>
+    <% if @user.producer.present? %>
       <div class="card h-10">
         <h5>生産者情報</h5>
         <%= render 'producers/params', producer: @producer %>
