@@ -5,22 +5,35 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
 gem 'rails', '~> 5.1.6'
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+
+# DB/Model
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.7'
+
+# View/Front
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
-gem 'devise'
+# Setting
 gem 'dotenv-rails'
+
+# Log in
+gem 'devise'
+
+# Image/Upload
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'jp_prefecture'
+
+# Storage
 gem 'fog'
+
+# Plug in
+gem 'jp_prefecture'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -38,5 +51,3 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
-
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
