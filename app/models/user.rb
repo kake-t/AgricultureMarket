@@ -32,12 +32,13 @@ class User < ApplicationRecord
   has_many :transactions, dependent: :destroy
 
   #指定のユーザーをフォローする
-  def follow!(other_user)
+
+  def follow(other_user)
     active_relationships.create!(followed_id: other_user.id)
   end
 
   #指定のユーザーのフォローを解除する
-  def unfollow!(other_user)
+  def unfollow(other_user)
     active_relationships.find_by(followed_id: other_user.id).destroy
   end
 
