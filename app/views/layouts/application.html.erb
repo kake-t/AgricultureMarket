@@ -20,7 +20,7 @@
       <p class="alert alert-error"><%= alert %></p>
     <% end %>
 
-    <div class="" id="margin-down-top">
+    <div class="" id="margin-down-top<%= '-toppage' if current_page?(root_path) %>">
       <%= yield %>
     </div>
 
