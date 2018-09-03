@@ -1,6 +1,32 @@
 # Additional translations at https://github.com/plataformatec/devise/wiki/I18n
 
 ja:
+  "Sign in": "ログイン"
+  "Registration": "ユーザー登録"
+  "Sign up": "ユーザー登録"
+  "Update": "更新"
+  "Forgot your password?": "パスワードを忘れた方はこちら"
+  "Send me reset password instructions": "パスワード再発行"
+  "Resend confirmation instructions": "パスワード再発行"
+  "Didn't receive confirmation instructions?": "確認メールの再送信"
+  "Didn't receive unlock instructions?": "アカウント凍結解除メールの再送信"
+
+  errors:
+    messages:
+      expired: "は期限切れになりました。登録し直してください。"
+#      expired: "has expired, please request a new one"
+      not_found: "は見つかりませんでした"
+#      not_found: "not found"
+      already_confirmed: "は既に登録済みです"
+#      already_confirmed: "was already confirmed"
+      not_locked: "は凍結されていません"
+#      not_locked: "was not locked"
+      not_saved:
+        one: "%{resource}にエラーが発生しました。"
+#        one: "1 error prohibited this %{resource} from being saved:"
+        other: "%{resource}に%{count}個のエラーが発生しました。"
+#        other: "%{count} errors prohibited this %{resource} from being saved:"
+
   devise:
     confirmations:
       confirmed: 'アカウントを登録しました。'
