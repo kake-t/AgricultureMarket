@@ -71,3 +71,11 @@ https://agriculturemarket.herokuapp.com/
 商品が相手に届くと、受け取り完了メールが来ます。
 
 以上で取引終了です。
+
+## インストール
+
+git clone
+bundle install
+rails db:create
+rails db:migrate
+http://localhost:3000/ にアクセス
