@@ -1,5 +1,6 @@
-# README
 # AglicultureMarket アグリマ  
+![2018-09-13 1 06 13](https://user-images.githubusercontent.com/36560265/45438253-a4058980-b6f1-11e8-8f58-036914687d95.png)
+## 概要
 農産物のフリマアプリ
 
 ### デプロイ
@@ -26,6 +27,7 @@ https://agriculturemarket.herokuapp.com/
 
 ## 使い方
 トップページからサインアップボタンを押してアカウントを作成したください。
+![サインアップボタン](https://user-images.githubusercontent.com/36560265/45438291-b8498680-b6f1-11e8-8815-5c2d5ec637c5.png)
 
 ユーザー登録画面に必要事項を入力してユーザー登録ボタンを押してください。
 
@@ -71,3 +73,11 @@ https://agriculturemarket.herokuapp.com/
 商品が相手に届くと、受け取り完了メールが来ます。
 
 以上で取引終了です。
+
+<!-- ## インストール
+
+1 git clone
+bundle install
+rails db:create
+rails db:migrate
+http://localhost:3000/ にアクセス -->
