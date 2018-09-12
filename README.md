@@ -11,7 +11,7 @@ https://agriculturemarket.herokuapp.com/
 そんな人達がフリーマーケットで気軽に野菜の販売ができたらいいなと思って作成しました。
 
 #### ER図
-![ER図](https://user-images.githubusercontent.com/36560265/45362213-3c770d80-b60f-11e8-8844-33f4375fb99b.png)
+![ER図](https://user-images.githubusercontent.com/36560265/45362176-19e4f480-b60f-11e8-9d30-451d380a6cec.png)
 
 #### 画面遷移図
 ![画面遷移図](https://user-images.githubusercontent.com/36560265/45362213-3c770d80-b60f-11e8-8844-33f4375fb99b.png)
