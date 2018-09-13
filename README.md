@@ -83,9 +83,9 @@ https://agriculturemarket.herokuapp.com/
 4. `bundle install`
 5. Yarnを使って Bootstrap, jqueryの導入
   Yarnをインストールしてなければ下記サイトからインストールしてください
-  https://yarnpkg.com/lang/en/
-  `yarn add jquery`
-  `yarn add bootstrap@4`
+    - https://yarnpkg.com/lang/en/
+    1. `yarn add jquery`
+    2. `yarn add bootstrap@4`
 6. config/initializers/carrierwave.rb 内の
   `config.fog_credentials = {
       provider:              'AWS',
