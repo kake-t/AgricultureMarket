@@ -20,6 +20,7 @@ https://agriculturemarket.herokuapp.com/
 ## 開発環境
 言語・ミドルウェアなど
 
+- ローカル開発PC（Mac）
 - Ruby 2.3.1
 - Ruby on Rails 5.1.6
 - PostgreSQL 10.2
@@ -74,10 +75,25 @@ https://agriculturemarket.herokuapp.com/
 
 以上で取引終了です。
 
-<!-- ## インストール
-
-1 git clone
-bundle install
-rails db:create
-rails db:migrate
-http://localhost:3000/ にアクセス -->
+## インストール
+1 `cd [ダウンロードしたいディレクトリ名]`
+2 `git clone git@github.com:kakeyatomo/AgricultureMarket.git`
+3 `cd Agriculturemarket/`
+4 `bundle install`
+5 Yarnを使って Bootstrap, jqueryの導入
+  Yarnをインストールしてなければ下記サイトからインストールしてください
+  [Yarn](https://yarnpkg.com/lang/en/)
+  `yarn add jquery`
+  `yarn add bootstrap@4`
+6 config/initializers/carrierwave.rb 内の
+  `config.fog_credentials = {
+      provider:              'AWS',
+      aws_access_key_id:     ENV["AWS_ACCESS_KEY_ID"],
+      aws_secret_access_key: ENV["AWS_SECRET_ACCESS_KEY"],
+      region:                'ap-northeast-1',
+      path_style:            true
+  }`
+  上記のコードをコメントアウト
+7 `rails db:create`
+8 `rails db:migrate`
+9 `http://localhost:3000/` にアクセス
