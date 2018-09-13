@@ -77,16 +77,16 @@ https://agriculturemarket.herokuapp.com/
 
 ## インストール
 
-1 `cd [ダウンロードしたいディレクトリ名]`
-2 `git clone git@github.com:kakeyatomo/AgricultureMarket.git`
-3 `cd Agriculturemarket/`
-4 `bundle install`
-5 Yarnを使って Bootstrap, jqueryの導入
+1. `cd [ダウンロードしたいディレクトリ名]`
+2. `git clone git@github.com:kakeyatomo/AgricultureMarket.git`
+3. `cd Agriculturemarket/`
+4. `bundle install`
+5. Yarnを使って Bootstrap, jqueryの導入
   Yarnをインストールしてなければ下記サイトからインストールしてください
-  [Yarn](https://yarnpkg.com/lang/en/)
+  https://yarnpkg.com/lang/en/
   `yarn add jquery`
   `yarn add bootstrap@4`
-6 config/initializers/carrierwave.rb 内の
+6. config/initializers/carrierwave.rb 内の
   `config.fog_credentials = {
       provider:              'AWS',
       aws_access_key_id:     ENV["AWS_ACCESS_KEY_ID"],
@@ -95,6 +95,6 @@ https://agriculturemarket.herokuapp.com/
       path_style:            true
   }`
   上記のコードをコメントアウト
-7 `rails db:create`
-8 `rails db:migrate`
-9 `http://localhost:3000/` にアクセス
+7. `rails db:create`
+8. `rails db:migrate`
+9. http://localhost:3000/ にアクセス
