@@ -97,6 +97,7 @@ https://agriculturemarket.herokuapp.com/
   }
   ```
   上記のコードをコメントアウト
+  
 7. `rails db:create`
 8. `rails db:migrate`
 9. http://localhost:3000/ にアクセス
