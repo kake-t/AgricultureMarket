@@ -32,6 +32,10 @@ h4 {
   margin-bottom: 20px;
 }
 
+li {
+  list-style: none;
+}
+
 // top
 .jumbotron {
   background: image-url('2.jpg') center no-repeat;
@@ -57,4 +61,10 @@ h4 {
 
 #top_app_name {
   font-size: 5rem;
+}
+
+.discription {
+  width: 100vw;
+  padding-top: 15rem;
+  padding-bottom: 15rem;
 }
