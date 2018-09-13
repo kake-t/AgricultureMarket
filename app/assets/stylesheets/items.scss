@@ -42,6 +42,7 @@ li {
   background-size: cover;
   padding-bottom: 20rem;
   color: white;
+  margin-bottom: 0;
 }
 
 .banner {
@@ -67,4 +68,12 @@ li {
   width: 100vw;
   padding-top: 15rem;
   padding-bottom: 15rem;
+  margin-left: 0;
+  margin-right: 0;
+  background-color: rgb(187, 242, 184)
+}
+
+.discription-image-size {
+  width: 10rem;
+  height: 20rem;
 }
