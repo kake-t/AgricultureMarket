@@ -87,13 +87,15 @@ https://agriculturemarket.herokuapp.com/
     1. `yarn add jquery`
     2. `yarn add bootstrap@4`
 6. config/initializers/carrierwave.rb 内の
-  `config.fog_credentials = {
+  ```
+  config.fog_credentials = {
       provider:              'AWS',
       aws_access_key_id:     ENV["AWS_ACCESS_KEY_ID"],
       aws_secret_access_key: ENV["AWS_SECRET_ACCESS_KEY"],
       region:                'ap-northeast-1',
       path_style:            true
-  }`
+  }
+  ```
   上記のコードをコメントアウト
 7. `rails db:create`
 8. `rails db:migrate`
