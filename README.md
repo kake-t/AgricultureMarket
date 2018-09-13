@@ -86,7 +86,7 @@ https://agriculturemarket.herokuapp.com/
     - https://yarnpkg.com/lang/en/
     1. `yarn add jquery`
     2. `yarn add bootstrap@4`
-6. config/initializers/carrierwave.rb 内の
+6. config/initializers/carrierwave.rb 内の下記のコードをコメントアウト
   ```
   config.fog_credentials = {
       provider:              'AWS',
@@ -96,8 +96,7 @@ https://agriculturemarket.herokuapp.com/
       path_style:            true
   }
   ```
-  上記のコードをコメントアウト
-  
+
 7. `rails db:create`
 8. `rails db:migrate`
 9. http://localhost:3000/ にアクセス
